@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
 
-/** <p>A tekst item.</p>
+/** <p>A text item.</p>
  * <p>A TextItem has drawingfunctionality.</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
@@ -29,13 +29,13 @@ public class TextItem extends SlideItem {
 	
 	private static final String EMPTYTEXT = "No Text Given";
 
-// a textitem of level level, with the text string
+// a text item of level, with the text string
 	public TextItem(int level, String string) {
 		super(level);
 		text = string;
 	}
 
-// an empty textitem
+// an empty text item
 	public TextItem() {
 		this(0, EMPTYTEXT);
 	}
@@ -53,8 +53,7 @@ public class TextItem extends SlideItem {
 	}
 
 // give the bounding box of the item
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, 
-			float scale, Style myStyle) {
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
 		int xsize = 0, ysize = (int) (myStyle.leading * scale);
 		Iterator<TextLayout> iterator = layouts.iterator();
@@ -73,14 +72,12 @@ public class TextItem extends SlideItem {
 	}
 
 // draw the item
-	public void draw(int x, int y, float scale, Graphics g, 
-			Style myStyle, ImageObserver o) {
+	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o) {
 		if (text == null || text.length() == 0) {
 			return;
 		}
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
-		Point pen = new Point(x + (int)(myStyle.indent * scale), 
-				y + (int) (myStyle.leading * scale));
+		Point pen = new Point(x + (int)(myStyle.indent * scale), y + (int) (myStyle.leading * scale));
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setColor(myStyle.color);
 		Iterator<TextLayout> it = layouts.iterator();
