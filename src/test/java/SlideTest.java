@@ -12,9 +12,11 @@ class SlideTest
     @Test
     void testingPipelines()
     {
-        this.slide.items.add(item1);
-        this.slide.items.add(item2);
-        this.slide.items.add(item3);
+        this.slide = new Slide();
+
+        slide.items.add(item1);
+        slide.items.add(item2);
+        slide.items.add(item3);
 
         assertEquals(slide.items.size(), 3);
     }
