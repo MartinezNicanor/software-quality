@@ -37,7 +37,6 @@ public class BitmapItemProxy extends SlideItem {
         }
     }
 
-    // Get string representation of the BitmapItemProxy
     @Override
     public String toString() {
         if (realBitmapItem == null) {

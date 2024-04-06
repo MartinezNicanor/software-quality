@@ -8,12 +8,12 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class BitmapItem extends SlideItem {
-	// Image and file-related constants
-	private static final String FILE_PREFIX = "File ";
-	private static final String NOT_FOUND_SUFFIX = " not found";
-
 	private BufferedImage image; // The loaded image
 	private String imageName; // The name of the image file
+
+	// Constants for error message
+	private static final String FILE_PREFIX = "File ";
+	private static final String NOT_FOUND_SUFFIX = " not found";
 
 	// Constructor with level and image file name
 	public BitmapItem(int level, String imageName) {
@@ -27,8 +27,13 @@ public class BitmapItem extends SlideItem {
 		this(0, null);
 	}
 
-	// Get name of the image file
+	// Get the name of the image file
 	public String getImageName() {
+		return imageName;
+	}
+
+	// Get the name of the image file
+	public String getName() {
 		return imageName;
 	}
 
@@ -50,17 +55,17 @@ public class BitmapItem extends SlideItem {
 				(int) (image.getHeight(observer) * scale), observer);
 	}
 
-	// Load image from file
+	// Load the image from file
 	private void loadImage() {
 		try {
 			image = ImageIO.read(new File(imageName));
 		} catch (IOException e) {
-			// If an error occurs while loading the image print an error message
+			// If an error occurs while loading the image, print an error message
 			System.err.println(FILE_PREFIX + imageName + NOT_FOUND_SUFFIX);
 		}
 	}
 
-	// Get string representation of the BitmapItem
+	// Get a string representation of the BitmapItem
 	@Override
 	public String toString() {
 		return "BitmapItem[" + getLevel() + "," + imageName + "]";
