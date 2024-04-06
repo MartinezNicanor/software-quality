@@ -5,7 +5,7 @@ import java.awt.image.ImageObserver;
 
 // Decorator to change font size of slides
 public class FontSizeDecorator extends SlideDecorator {
-    private int fontSize;
+    int fontSize;
 
     // Different font size options
     public static final int SMALL = 10;

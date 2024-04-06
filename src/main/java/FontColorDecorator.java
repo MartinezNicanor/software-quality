@@ -6,7 +6,7 @@ import java.awt.image.ImageObserver;
 
 // Decorator to change font color of slides
 public class FontColorDecorator extends SlideDecorator {
-    private Color color;
+    Color color;
 
     // Different font color options
     public static final Color BLACK = Color.BLACK;

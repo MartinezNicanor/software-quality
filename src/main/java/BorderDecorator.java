@@ -5,7 +5,7 @@ import java.awt.image.ImageObserver;
 
 // Decorator to add border to slides
 public class BorderDecorator extends SlideDecorator {
-    private Color color;
+    Color color;
 
     // Different border color options
     public static final Color BLACK = Color.BLACK;

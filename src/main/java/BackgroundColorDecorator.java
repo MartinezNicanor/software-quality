@@ -5,7 +5,7 @@ import java.awt.image.ImageObserver;
 
 // Decorator to add background color to slides
 public class BackgroundColorDecorator extends SlideDecorator {
-    private Color color;
+    Color color;
 
     // Different background color options
     public static final Color WHITE = Color.WHITE;
