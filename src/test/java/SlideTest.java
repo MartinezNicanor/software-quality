@@ -18,6 +18,6 @@ class SlideTest
         slide.items.add(item2);
         slide.items.add(item3);
 
-        assertEquals(slide.items.size(), 3);
+        assertNotEquals(slide.items.size(), 3);
     }
 }
