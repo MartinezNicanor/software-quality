@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 import java.io.IOException;
 
-/** JabberPoint Main Programma
+/** JabberPoint Main Program
  * <p>This program is distributed under the terms of the accompanying
  * COPYRIGHT.txt file (which is NOT the GNU General Public License).
  * Please read it. Your use of the software constitutes acceptance
@@ -23,7 +23,7 @@ public class JabberPoint {
 	protected static final String JABERR = "Jabberpoint Error ";
 	protected static final String JABVERSION = "Jabberpoint 1.6 - OU version";
 
-	/** Het Main Programma */
+	/** Main Program */
 	public static void main(String argv[]) {
 		
 		Style.createStyles();
