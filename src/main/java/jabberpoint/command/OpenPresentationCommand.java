@@ -1,19 +1,18 @@
-package jabberpoint.command.menuController;
+package jabberpoint.command;
 
 import jabberpoint.Accessor;
 import jabberpoint.Presentation;
 import jabberpoint.XMLAccessor;
-import jabberpoint.command.Command;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class OpenCommand extends Command
+public class OpenPresentationCommand extends Command
 {
     private Frame frame;
 
-    public OpenCommand(Presentation presentation, Frame frame)
+    public OpenPresentationCommand(Presentation presentation, Frame frame)
     {
         super(presentation);
         this.frame = frame;

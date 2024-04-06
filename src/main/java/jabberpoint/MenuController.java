@@ -1,10 +1,6 @@
-package jabberpoint.command.menuController;
+package jabberpoint;
 
-import jabberpoint.Presentation;
-import jabberpoint.command.Command;
-import jabberpoint.command.keyController.ExitCommand;
-import jabberpoint.command.keyController.NextSlideCommand;
-import jabberpoint.command.keyController.PreviousSlideCommand;
+import jabberpoint.command.*;
 
 import java.awt.MenuBar;
 import java.awt.Frame;
@@ -54,7 +50,7 @@ public class MenuController extends MenuBar {
 		fileMenu.add(this.menuItem = mkMenuItem("Open"));
 		this.menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Command command = new OpenCommand(presentation, frame);
+				Command command = new OpenPresentationCommand(presentation, frame);
 				command.execute();
 			}
 		});
@@ -66,7 +62,7 @@ public class MenuController extends MenuBar {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				Command command = new NewCommand(presentation, frame);
+				Command command = new NewPresentationCommand(presentation, frame);
 				command.execute();
 			}
 		});
@@ -78,7 +74,7 @@ public class MenuController extends MenuBar {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				Command command = new SaveCommand(presentation, frame);
+				Command command = new SavePresentationCommand(presentation, frame);
 				command.execute();
 			}
 		});
@@ -90,7 +86,7 @@ public class MenuController extends MenuBar {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				Command command = new ExitCommand(presentation);
+				Command command = new ExitPresentationCommand(presentation);
 				command.execute();
 			}
 		});

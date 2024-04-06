@@ -1,11 +1,11 @@
-package jabberpoint.command.keyController;
+package jabberpoint.command;
 
 import jabberpoint.Presentation;
 import jabberpoint.command.Command;
 
-public class ExitCommand extends Command
+public class NextSlideCommand extends Command
 {
-    public ExitCommand(Presentation presentation)
+    public NextSlideCommand(Presentation presentation)
     {
         super(presentation);
     }
@@ -13,6 +13,6 @@ public class ExitCommand extends Command
     @Override
     public void execute()
     {
-        this.presentation.exit(0);
+        this.presentation.nextSlide();
     }
 }

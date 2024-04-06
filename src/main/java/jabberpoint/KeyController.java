@@ -1,7 +1,9 @@
-package jabberpoint.command.keyController;
+package jabberpoint;
 
-import jabberpoint.Presentation;
 import jabberpoint.command.Command;
+import jabberpoint.command.ExitPresentationCommand;
+import jabberpoint.command.NextSlideCommand;
+import jabberpoint.command.PreviousSlideCommand;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
@@ -41,7 +43,7 @@ public class KeyController extends KeyAdapter {
 				break;
 			case 'q':
 			case 'Q':
-				command = new ExitCommand(this.presentation);
+				command = new ExitPresentationCommand(this.presentation);
 				command.execute();
 				break; // Probably never reached!!
 			default:

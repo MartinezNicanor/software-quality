@@ -1,15 +1,14 @@
-package jabberpoint.command.menuController;
+package jabberpoint.command;
 
 import jabberpoint.Presentation;
-import jabberpoint.command.Command;
 
 import java.awt.*;
 
-public class NewCommand extends Command
+public class NewPresentationCommand extends Command
 {
     private Frame frame;
 
-    public NewCommand(Presentation presentation, Frame frame)
+    public NewPresentationCommand(Presentation presentation, Frame frame)
     {
         super(presentation);
         this.frame = frame;

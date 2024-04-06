@@ -1,4 +1,4 @@
-package jabberpoint.command.menuController;
+package jabberpoint.command;
 
 import jabberpoint.AboutBox;
 import jabberpoint.Presentation;
