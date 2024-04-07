@@ -1,5 +1,6 @@
-package jabberpoint;
+package jabberpoint.slideViewer;
 
+import jabberpoint.Presentation;
 import jabberpoint.controllers.KeyController;
 import jabberpoint.controllers.MenuController;
 
