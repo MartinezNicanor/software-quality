@@ -1,9 +1,10 @@
-package jabberpoint;
+package jabberpoint.controllers;
 
-import jabberpoint.command.Command;
-import jabberpoint.command.ExitPresentationCommand;
-import jabberpoint.command.NextSlideCommand;
-import jabberpoint.command.PreviousSlideCommand;
+import jabberpoint.Presentation;
+import jabberpoint.controllers.command.Command;
+import jabberpoint.controllers.command.ExitPresentationCommand;
+import jabberpoint.controllers.command.NextSlideCommand;
+import jabberpoint.controllers.command.PreviousSlideCommand;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
