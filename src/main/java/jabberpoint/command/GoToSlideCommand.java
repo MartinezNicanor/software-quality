@@ -1,7 +1,6 @@
 package jabberpoint.command;
 
 import jabberpoint.Presentation;
-import jabberpoint.command.Command;
 
 import javax.swing.*;
 

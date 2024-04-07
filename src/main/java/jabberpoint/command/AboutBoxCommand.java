@@ -2,7 +2,6 @@ package jabberpoint.command;
 
 import jabberpoint.AboutBox;
 import jabberpoint.Presentation;
-import jabberpoint.command.Command;
 
 import java.awt.*;
 
