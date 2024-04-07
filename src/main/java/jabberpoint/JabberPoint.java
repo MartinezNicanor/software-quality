@@ -1,5 +1,7 @@
 package jabberpoint;
 
+import jabberpoint.accessor.Accessor;
+import jabberpoint.accessor.XMLAccessor;
 import jabberpoint.slideViewer.SlideViewerFrame;
 
 import javax.swing.JOptionPane;
