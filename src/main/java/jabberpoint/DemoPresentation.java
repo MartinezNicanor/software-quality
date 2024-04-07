@@ -1,8 +1,5 @@
 package jabberpoint;
 
-import jabberpoint.slideItemFactory.BitmapItemCreator;
-import jabberpoint.slideItemFactory.SlideItemCreator;
-
 /**
  * A built in demo-presentation
  *
@@ -12,13 +9,15 @@ import jabberpoint.slideItemFactory.SlideItemCreator;
 
 class DemoPresentation extends Accessor
 {
-    private final SlideItemCreator bitmapItemCreator = new BitmapItemCreator();
-
-
+    //Loads demo presentation into provided Presentation object
     public void loadFile(Presentation presentation, String unusedFilename)
     {
+        // Create and set title for presentation
         presentation.setTitle("Demo Presentation");
+        // Create slides and add content to them
         Slide slide;
+
+        // Slide 1
         slide = new Slide();
         slide.setTitle("JabberPoint");
         slide.addTextItem(1, "The Java Presentation Tool");
@@ -33,6 +32,7 @@ class DemoPresentation extends Accessor
         slide.addTextItem(3, "Quit: q or Q");
         presentation.append(slide);
 
+        // Slide 2
         slide = new Slide();
         slide.setTitle("Demonstration of levels and stijlen");
         slide.addTextItem(1, "Level 1");
@@ -44,18 +44,21 @@ class DemoPresentation extends Accessor
         slide.addTextItem(4, "And this is level 4");
         presentation.append(slide);
 
+        // Slide 3
         slide = new Slide();
         slide.setTitle("The third slide");
         slide.addTextItem(1, "To open a new presentation,");
         slide.addTextItem(2, "use File->Open from the menu.");
         slide.addTextItem(1, " ");
         slide.addTextItem(1, "This is the end of the presentation.");
-        slide.addSlideItem(bitmapItemCreator.createSlideItem(1, "JabberPoint.gif"));
+        slide.addBitmapItem(1, "JabberPoint.gif");
         presentation.append(slide);
     }
 
+    // Method is not implemented for demo presentation
     public void saveFile(Presentation presentation, String unusedFilename)
     {
+        // Throws IllegalStateException since saving is not supported for demo presentation
         throw new IllegalStateException("Save As->Demo! called");
     }
 }

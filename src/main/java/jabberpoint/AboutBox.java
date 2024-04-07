@@ -4,14 +4,16 @@ import java.awt.Frame;
 import javax.swing.JOptionPane;
 
 /**
- * De About-box voor JabberPoint.
+ * AboutBox displays information about JabberPoint.
+ * This class shows a dialog box containing information about JabberPoint.
+ * It includes the program's description, copyright notice, and author information.
  *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
-
 public class AboutBox
 {
+    // Displays About Box dialog
     public static void show(Frame parent)
     {
         JOptionPane.showMessageDialog(parent,

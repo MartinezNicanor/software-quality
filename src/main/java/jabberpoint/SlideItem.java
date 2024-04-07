@@ -12,29 +12,13 @@ import java.awt.image.ImageObserver;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public abstract class SlideItem
+public interface SlideItem
 {
-    private int level = 0; // level of the slide item
-
-    public SlideItem(int lev)
-    {
-        level = lev;
-    }
-
-    public SlideItem()
-    {
-        this(0);
-    }
-
-    // Give the level
-    public int getLevel()
-    {
-        return level;
-    }
-
     // Give the bounding box
-    public abstract Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style);
+    public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style);
 
     // Draw the item
-    public abstract void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer);
+    public void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer);
+
+    int getLevel();
 }

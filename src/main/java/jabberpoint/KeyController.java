@@ -19,16 +19,21 @@ public class KeyController extends KeyAdapter
 {
     private Presentation presentation; // Commands are given to the presentation
 
+    // Constructor
     public KeyController(Presentation presentation)
     {
         this.presentation = presentation;
     }
 
+    // Method to handle key presses
     public void keyPressed(KeyEvent keyEvent)
     {
         Command command;
+
+        // Switch statement to determine action based on key pressed
         switch (keyEvent.getKeyCode())
         {
+            // Next slide actions
             case KeyEvent.VK_PAGE_DOWN:
             case KeyEvent.VK_DOWN:
             case KeyEvent.VK_ENTER:
@@ -36,17 +41,23 @@ public class KeyController extends KeyAdapter
                 command = new NextSlideCommand(this.presentation);
                 command.execute();
                 break;
+
+            // Previous slide actions
             case KeyEvent.VK_PAGE_UP:
             case KeyEvent.VK_UP:
             case '-':
                 command = new PreviousSlideCommand(this.presentation);
                 command.execute();
                 break;
+
+            // Exit presentation action
             case 'q':
             case 'Q':
                 command = new ExitPresentationCommand(this.presentation);
                 command.execute();
                 break; // Probably never reached!!
+
+            // No action for other keys
             default:
                 break;
         }

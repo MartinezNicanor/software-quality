@@ -10,9 +10,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import jabberpoint.slideItemFactory.BitmapItemCreator;
-import jabberpoint.slideItemFactory.SlideItemCreator;
-import jabberpoint.slideItemFactory.TextItemCreator;
 import org.xml.sax.SAXException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -30,16 +27,13 @@ import org.w3c.dom.NodeList;
 public class XMLAccessor extends Accessor
 {
 
-    private final SlideItemCreator textItemCreator = new TextItemCreator();
-    private final SlideItemCreator bitmapItemCreator = new BitmapItemCreator();
-
     /**
      * Default API to use.
      */
     protected static final String DEFAULT_API_TO_USE = "dom";
 
     /**
-     * namen van xml tags of attributen
+     * Names of xml tags or attributen
      */
     protected static final String SHOWTITLE = "showtitle";
     protected static final String SLIDETITLE = "title";
@@ -51,13 +45,14 @@ public class XMLAccessor extends Accessor
     protected static final String IMAGE = "image";
 
     /**
-     * tekst van messages
+     * Text from messages
      */
     protected static final String PCE = "Parser Configuration Exception";
     protected static final String UNKNOWNTYPE = "Unknown Element type";
     protected static final String NFE = "Number Format Exception";
 
 
+    // Gets the title from given XML element
     private String getTitle(Element element, String tagName)
     {
         NodeList titles = element.getElementsByTagName(tagName);
@@ -65,9 +60,14 @@ public class XMLAccessor extends Accessor
 
     }
 
+    // Loads presentation from an XML file
     public void loadFile(Presentation presentation, String filename) throws IOException
     {
-        int slideNumber, itemNumber, max = 0, maxItems = 0;
+        int slideNumber;
+        int itemNumber;
+        int max = 0;
+        int maxItems = 0;
+
         try
         {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -104,6 +104,7 @@ public class XMLAccessor extends Accessor
         }
     }
 
+    // Loads a slide item from XML element and adds it to slide
     protected void loadSlideItem(Slide slide, Element item)
     {
         int level = 1; // default
@@ -122,12 +123,12 @@ public class XMLAccessor extends Accessor
         String type = attributes.getNamedItem(KIND).getTextContent();
         if (TEXT.equals(type))
         {
-            slide.addSlideItem(textItemCreator.createSlideItem(level, item.getTextContent()));
+            slide.addTextItem(level, item.getTextContent());
         } else
         {
             if (IMAGE.equals(type))
             {
-                slide.addSlideItem(bitmapItemCreator.createSlideItem(level, item.getTextContent()));
+                slide.addBitmapItem(level, item.getTextContent());
             } else
             {
                 System.err.println(UNKNOWNTYPE);
@@ -135,6 +136,7 @@ public class XMLAccessor extends Accessor
         }
     }
 
+    // Saves presentation to an XML file
     public void saveFile(Presentation presentation, String filename) throws IOException
     {
         PrintWriter out = new PrintWriter(new FileWriter(filename));
@@ -163,7 +165,7 @@ public class XMLAccessor extends Accessor
                     if (slideItem instanceof BitmapItem)
                     {
                         out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
-                        out.print(((BitmapItem) slideItem).getName());
+                        out.print(((BitmapItem) slideItem).getImageName());
                     } else
                     {
                         System.out.println("Ignoring " + slideItem);

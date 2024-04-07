@@ -2,31 +2,25 @@ package jabberpoint;
 
 import java.io.IOException;
 
-/**
- * <p>Een Accessor maakt het mogelijk om gegevens voor een presentatie
- * te lezen of te schrijven.</p>
- * <p>Niet-abstracte subklassen moeten de load en de save methode implementeren.</p>
- *
- * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.6 2014/05/16 Sylvia Stuurman
- */
-
 public abstract class Accessor
 {
-    public static final String DEMO_NAME = "Demonstration presentation";
-    public static final String DEFAULT_EXTENSION = ".xml";
+    public static final String DEMO_NAME = "Demonstration presentation"; // Default name for demo presentation
+    public static final String DEFAULT_EXTENSION = ".xml"; // Default file extension
 
+    // Returns instance of DemoPresentation
     public static Accessor getDemoAccessor()
     {
         return new DemoPresentation();
     }
 
+    //Constructor
     public Accessor()
     {
     }
 
+    // Abstract method to load data for presentation
     abstract public void loadFile(Presentation p, String fn) throws IOException;
 
+    // Abstract method to save data for presentation
     abstract public void saveFile(Presentation p, String fn) throws IOException;
-
 }

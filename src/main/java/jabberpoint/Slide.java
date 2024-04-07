@@ -1,5 +1,6 @@
 package jabberpoint;
 
+import jabberpoint.slideItemFactory.BitmapItemCreator;
 import jabberpoint.slideItemFactory.SlideItemCreator;
 import jabberpoint.slideItemFactory.TextItemCreator;
 
@@ -19,14 +20,15 @@ public class Slide
 {
     public final static int WIDTH = 1200;
     public final static int HEIGHT = 800;
-    protected String title; // title is saved separately
-    protected Vector<SlideItem> items; // slide items are saved in a Vector
+    protected String title;
+    protected Vector<SlideItem> slideItems;
     private final SlideItemCreator textItemCreator = new TextItemCreator();
+    private final SlideItemCreator bitmapItemCreator = new BitmapItemCreator();
 
 
     public Slide()
     {
-        items = new Vector<SlideItem>();
+        slideItems = new Vector<SlideItem>();
     }
 
     public String getTitle()
@@ -39,26 +41,35 @@ public class Slide
         title = newTitle;
     }
 
-    public void addSlideItem(SlideItem anItem)
+    public void addSlideItem(SlideItem slideItem)
     {
-        items.addElement(anItem);
+        this.slideItems.addElement(slideItem);
     }
 
-    // Create TextItem of String, and add the TextItem
     public void addTextItem(int level, String message)
     {
         addSlideItem(textItemCreator.createSlideItem(level, message));
     }
 
+    public void addBitmapItem(int level, String message)
+    {
+        addSlideItem(bitmapItemCreator.createSlideItem(level, message));
+    }
+
+    public SlideItem getSlideItem(int number)
+    {
+        return (SlideItem) slideItems.elementAt(number);
+    }
+
     public Vector<SlideItem> getSlideItems()
     {
-        return items;
+        return this.slideItems;
     }
 
     // give the size of the Slide
-    public int getSize()
+    public int getAmountOfSlideItems()
     {
-        return items.size();
+        return this.slideItems.size();
     }
 
     // draw the slide
@@ -72,7 +83,7 @@ public class Slide
         slideItem.draw(area.x, y, scale, g, style, view);
         y += slideItem.getBoundingBox(g, view, scale, style).height;
 
-        for (int number = 0; number < getSize(); number++)
+        for (int number = 0; number < getAmountOfSlideItems(); number++)
         {
             slideItem = getSlideItems().elementAt(number);
             style = Style.getStyle(slideItem.getLevel());
@@ -81,8 +92,8 @@ public class Slide
         }
     }
 
-    // Give the scale for drawing
-    private float getScale(Rectangle area)
+    // Gives scale for drawing
+    public float getScale(Rectangle area)
     {
         return Math.min(((float) area.width) / ((float) WIDTH), ((float) area.height) / ((float) HEIGHT));
     }
