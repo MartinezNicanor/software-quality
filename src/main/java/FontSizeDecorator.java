@@ -23,7 +23,12 @@ public class FontSizeDecorator extends SlideDecorator {
     @Override
     public void draw(Graphics g, Rectangle area, ImageObserver view) {
         super.draw(g, area, view);
-        Font originalFont = g.getFont();
-        g.setFont(originalFont.deriveFont((float) fontSize));
+        if (g != null) {
+            Font originalFont = g.getFont();
+            g.setFont(originalFont.deriveFont((float) fontSize));
+        } else {
+            throw new IllegalArgumentException("Graphics object cannot be null");
+        }
     }
+
 }

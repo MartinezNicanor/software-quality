@@ -23,7 +23,11 @@ public class BorderDecorator extends SlideDecorator {
     @Override
     public void draw(Graphics g, Rectangle area, ImageObserver view) {
         super.draw(g, area, view);
-        g.setColor(color);
-        g.drawRect(area.x, area.y, area.width, area.height);
+        if (g != null) {
+            g.setColor(color); // NullPointerException occurs here if g is null
+        } else {
+            throw new IllegalArgumentException("Graphics object cannot be null");
+        }
     }
+
 }
