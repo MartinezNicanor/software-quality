@@ -18,9 +18,9 @@ public abstract class Accessor
     {
     }
 
-    // Abstract method to load data for presentation.
+    // Abstract method to load data for presentation
     abstract public void loadFile(Presentation p, String fn) throws IOException;
 
-    // Abstract method to save data for presentation.
+    // Abstract method to save data for presentation
     abstract public void saveFile(Presentation p, String fn) throws IOException;
 }

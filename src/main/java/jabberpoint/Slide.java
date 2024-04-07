@@ -20,8 +20,8 @@ public class Slide
 {
     public final static int WIDTH = 1200;
     public final static int HEIGHT = 800;
-    protected String title; // title is saved separately
-    protected Vector<SlideItem> slideItems; // slide items are saved in a Vector
+    protected String title;
+    protected Vector<SlideItem> slideItems;
     private final SlideItemCreator textItemCreator = new TextItemCreator();
     private final SlideItemCreator bitmapItemCreator = new BitmapItemCreator();
 
@@ -92,7 +92,7 @@ public class Slide
         }
     }
 
-    // Give the scale for drawing
+    // Gives scale for drawing
     public float getScale(Rectangle area)
     {
         return Math.min(((float) area.width) / ((float) WIDTH), ((float) area.height) / ((float) HEIGHT));

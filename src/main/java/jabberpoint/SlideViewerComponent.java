@@ -19,9 +19,9 @@ import javax.swing.JFrame;
 public class SlideViewerComponent extends JComponent
 {
 
-    private Slide slide; // current slide
-    private Font labelFont = null; // font for labels
-    private Presentation presentation = null; // the presentation
+    private Slide slide;
+    private Font labelFont = null;
+    private Presentation presentation = null;
     private JFrame frame = null;
 
     private static final long serialVersionUID = 227L;

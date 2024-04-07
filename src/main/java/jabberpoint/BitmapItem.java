@@ -44,7 +44,7 @@ public class BitmapItem implements SlideItem
     }
 
     @Override
-    // give the  bounding box of the image
+    // gives bounding box of the image
     public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
     {
         return new Rectangle((int) (myStyle.indent * scale), 0,
@@ -54,7 +54,7 @@ public class BitmapItem implements SlideItem
     }
 
     @Override
-    // draw the image
+    // draws the image
     public void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer)
     {
         if (style == null || imageName == null)
