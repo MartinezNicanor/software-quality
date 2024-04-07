@@ -5,6 +5,13 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;
 import javax.swing.JFrame;
 
+/**
+ * <p>The application window for a slideviewcomponent</p>
+ *
+ * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
+ * @version 1.6 2014/05/16 Sylvia Stuurman
+ */
+
 public class SlideViewerFrame extends JFrame
 {
     private static final long serialVersionUID = 3227L;
@@ -13,7 +20,6 @@ public class SlideViewerFrame extends JFrame
     public final static int WIDTH = 1200;
     public final static int HEIGHT = 800;
 
-    // Constructor
     public SlideViewerFrame(String title, Presentation presentation)
     {
         super(title);
@@ -22,8 +28,9 @@ public class SlideViewerFrame extends JFrame
         setupWindow(slideViewerComponent, presentation);
     }
 
-    //Set up the GUI window.
-    public void setupWindow(SlideViewerComponent slideViewerComponent, Presentation presentation)
+    // Setup GUI
+    public void setupWindow(SlideViewerComponent
+                                    slideViewerComponent, Presentation presentation)
     {
         setTitle(JABTITLE);
         addWindowListener(new WindowAdapter()
@@ -34,9 +41,9 @@ public class SlideViewerFrame extends JFrame
             }
         });
         getContentPane().add(slideViewerComponent);
-        addKeyListener(new KeyController(presentation)); // Add controller for keyboard input
-        setMenuBar(new MenuController(this, presentation)); // Add controller for menu actions
-        setSize(new Dimension(WIDTH, HEIGHT)); // Set up size of window
-        setVisible(true); // Make window visible
+        addKeyListener(new KeyController(presentation)); // add a controller
+        setMenuBar(new MenuController(this, presentation));    // add another controller
+        setSize(new Dimension(WIDTH, HEIGHT)); // Same sizes as Slide has.
+        setVisible(true);
     }
 }

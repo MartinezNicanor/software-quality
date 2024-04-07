@@ -26,6 +26,7 @@ import org.w3c.dom.NodeList;
 
 public class XMLAccessor extends Accessor
 {
+
     /**
      * Default API to use.
      */

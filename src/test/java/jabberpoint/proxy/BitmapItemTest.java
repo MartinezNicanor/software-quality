@@ -1,3 +1,5 @@
+package jabberpoint.proxy;
+
 import jabberpoint.BitmapItem;
 import jabberpoint.Style;
 import org.junit.Test;
