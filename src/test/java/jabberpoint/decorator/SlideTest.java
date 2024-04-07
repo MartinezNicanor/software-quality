@@ -1,3 +1,5 @@
+package jabberpoint.decorator;
+
 import static org.junit.Assert.assertEquals;
 
 import java.awt.Rectangle;
@@ -8,9 +10,15 @@ import java.util.Vector;
 import jabberpoint.Slide;
 import jabberpoint.SlideItem;
 import jabberpoint.TextItem;
+import jabberpoint.slideItemFactory.BitmapItemCreator;
+import jabberpoint.slideItemFactory.SlideItemCreator;
+import jabberpoint.slideItemFactory.TextItemCreator;
 import org.junit.Test;
 
 public class SlideTest {
+
+    private SlideItemCreator textItemCreator = new TextItemCreator();
+    private SlideItemCreator bitmapItemCreator = new BitmapItemCreator();
 
     // Test method to verify scale calculation when width is larger
     @Test
@@ -47,8 +55,8 @@ public class SlideTest {
         Slide slide = new Slide();
         SlideItem item1 = new TextItem(0, "Item 1");
         SlideItem item2 = new TextItem(1, "Item 2");
-        slide.append(item1);
-        slide.append(item2);
+        slide.addTextItem(0, "Item 1");
+        slide.addTextItem(1, "Item 2");
 
         Vector<SlideItem> items = slide.getSlideItems();
         assertEquals(2, items.size()); // Check size of items vector

@@ -11,42 +11,32 @@ import java.io.IOException;
  * of the terms in the COPYRIGHT.txt file.</p>
  *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.1 2002/12/17 Gert Florijn
- * @version 1.2 2003/11/19 Sylvia Stuurman
- * @version 1.3 2004/08/17 Sylvia Stuurman
- * @version 1.4 2007/07/16 Sylvia Stuurman
- * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
-public class JabberPoint {
-	protected static final String IOERR = "IO Error: ";
-	protected static final String JABERR = "Jabberpoint Error ";
-	protected static final String JABVERSION = "Jabberpoint 1.6 - OU version";
+public class JabberPoint
+{
 
-	/** The main program. */
-	public static void main(String argv[]) {
-		// Create the default slide styles
-		Style.createStyles();
-
-		// Create new presentation
-		Presentation presentation = new Presentation();
-
-		// Create and display SlideViewerFrame
-		new SlideViewerFrame(JABVERSION, presentation);
-
-		try {
-			if (argv.length == 0) { // load a demo presentation if no file specified
-				Accessor.getDemoAccessor().loadFile(presentation, "");
-			} else {
-				// Load specified XML file
-				new XMLAccessor().loadFile(presentation, argv[0]);
-			}
-			presentation.setSlideNumber(0); // Set initial slide number
-		} catch (IOException ex) {
-			// Display error message if file loading fails
-			JOptionPane.showMessageDialog(null,
-					IOERR + ex, JABERR,
-					JOptionPane.ERROR_MESSAGE);
-		}
-	}
+    /**
+     * The main program.
+     */
+    public static void main(String[] argv)
+    {
+        Style.createStyles();
+        Presentation presentation = new Presentation();
+        new SlideViewerFrame("Jabberpoint 1.6 - OU version", presentation);
+        try
+        {
+            if (argv.length == 0)
+            { // a demo presentation
+                Accessor.getDemoAccessor().loadFile(presentation, "");
+            } else
+            {
+                new XMLAccessor().loadFile(presentation, argv[0]);
+            }
+            presentation.setSlideNumber(0);
+        } catch (IOException ex)
+        {
+            JOptionPane.showMessageDialog(null, "IO Error: " + ex, "Jabberpoint Error ", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }

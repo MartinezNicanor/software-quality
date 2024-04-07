@@ -1,3 +1,5 @@
+package jabberpoint.decorator;
+
 import static org.junit.Assert.assertTrue;
 import java.awt.Color;
 import java.awt.Graphics;
