@@ -4,12 +4,14 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
+import jabberpoint.*;
 import org.junit.Test;
 
 public class SlideDecoratorTest {
 
     // Mock Slide class for testing
-    private static class MockSlide extends Slide {
+    private static class MockSlide extends Slide
+    {
         @Override
         public void draw(Graphics g, Rectangle area, ImageObserver view) {
         }
@@ -22,7 +24,7 @@ public class SlideDecoratorTest {
         FontSizeDecorator fontSizeDecorator = new FontSizeDecorator(slide, FontSizeDecorator.MEDIUM);
 
         assertNotNull(fontSizeDecorator); // Check if FontSizeDecorator instance is not null
-        assertEquals(FontSizeDecorator.MEDIUM, fontSizeDecorator.fontSize); // Check if font size is set correctly
+        assertEquals(FontSizeDecorator.MEDIUM, fontSizeDecorator.getFontSize()); // Check if font size is set correctly
     }
 
     // Test for BorderDecorator
@@ -32,7 +34,7 @@ public class SlideDecoratorTest {
         BorderDecorator borderDecorator = new BorderDecorator(slide, BorderDecorator.BLACK);
 
         assertNotNull(borderDecorator); // Check if BorderDecorator instance is not null
-        assertEquals(BorderDecorator.BLACK, borderDecorator.color); // Check if border color is set correctly
+        assertEquals(BorderDecorator.BLACK, borderDecorator.getColor()); // Check if border color is set correctly
     }
 
     // Test for FontColorDecorator
@@ -42,7 +44,7 @@ public class SlideDecoratorTest {
         FontColorDecorator fontColorDecorator = new FontColorDecorator(slide, FontColorDecorator.RED);
 
         assertNotNull(fontColorDecorator); // Check if FontColorDecorator instance is not null
-        assertEquals(FontColorDecorator.RED, fontColorDecorator.color); // Check if font color is set correctly
+        assertEquals(FontColorDecorator.RED, fontColorDecorator.getColor()); // Check if font color is set correctly
     }
 
     // Test for BackgroundColorDecorator
@@ -53,6 +55,6 @@ public class SlideDecoratorTest {
                 BackgroundColorDecorator.YELLOW);
 
         assertNotNull(backgroundColorDecorator); // Check if BackgroundColorDecorator is not null
-        assertEquals(BackgroundColorDecorator.YELLOW, backgroundColorDecorator.color); // check if its set
+        assertEquals(BackgroundColorDecorator.YELLOW, backgroundColorDecorator.getColor()); // check if its set
     }
 }

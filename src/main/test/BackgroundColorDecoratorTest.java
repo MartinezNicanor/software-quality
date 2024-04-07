@@ -3,12 +3,16 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
+
+import jabberpoint.BackgroundColorDecorator;
+import jabberpoint.Slide;
 import org.junit.Test;
 
 public class BackgroundColorDecoratorTest {
 
     // Mock Slide class for testing
-    private static class MockSlide extends Slide {
+    private static class MockSlide extends Slide
+    {
         private boolean drawCalled = false;
 
         @Override

@@ -5,6 +5,9 @@ import java.awt.Graphics;
 import java.awt.image.ImageObserver;
 import java.util.Vector;
 
+import jabberpoint.Slide;
+import jabberpoint.SlideItem;
+import jabberpoint.TextItem;
 import org.junit.Test;
 
 public class SlideTest {
