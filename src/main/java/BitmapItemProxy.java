@@ -1,11 +1,10 @@
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
-import javax.imageio.ImageIO;
 
 public class BitmapItemProxy extends SlideItem {
-    private String imageName;
-    private BitmapItem realBitmapItem;
+    private String imageName; // The name of the image file
+    private BitmapItem realBitmapItem; // The real BitmapItem object
 
     // Constructor
     public BitmapItemProxy(int level, String name) {
@@ -13,30 +12,31 @@ public class BitmapItemProxy extends SlideItem {
         imageName = name;
     }
 
-    // Get the bounding box of the image
+    // Get bounding box
     @Override
     public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
         if (realBitmapItem == null) {
             // Placeholder logic: return a placeholder rectangle
             return new Rectangle(0, 0, 100, 100); // Example placeholder size
         } else {
-            // Delegate the call to the real BitmapItem object
+            // Delegate call to the real BitmapItem object
             return realBitmapItem.getBoundingBox(g, observer, scale, myStyle);
         }
     }
 
-    // Draw the image
+    // Draws image
     @Override
     public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
         if (realBitmapItem == null) {
-            // Draw a placeholder rectangle
+            // Draw placeholder rectangle
             g.drawRect(x, y, 100, 100); // Example placeholder rectangle
         } else {
-            // Delegate the call to the real BitmapItem object
+            // Delegate the call to real BitmapItem object
             realBitmapItem.draw(x, y, scale, g, myStyle, observer);
         }
     }
 
+    // Returns string representation of BitmapItemProxy
     @Override
     public String toString() {
         if (realBitmapItem == null) {
@@ -48,15 +48,15 @@ public class BitmapItemProxy extends SlideItem {
         }
     }
 
-    // Method to load the real BitmapItem object
+    // Loads real BitmapItem object.
     public void loadImage() {
         try {
-            // Attempt to load the image using the real BitmapItem object
+            // Attempt to load image using real BitmapItem object
             realBitmapItem = new BitmapItem(getLevel(), imageName);
         } catch (Exception e) {
-            // Handle error when loading the image
+            // Handle error when loading image
             System.err.println("Error loading image: " + e.getMessage());
-            e.printStackTrace(); // Print the stack trace for debugging purposes
+            e.printStackTrace(); // Print stack trace for debugging purposes
         }
     }
 }
