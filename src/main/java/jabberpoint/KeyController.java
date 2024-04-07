@@ -15,16 +15,20 @@ import java.awt.event.KeyAdapter;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class KeyController extends KeyAdapter {
+public class KeyController extends KeyAdapter
+{
     private Presentation presentation; // Commands are given to the presentation
 
-    public KeyController(Presentation presentation) {
+    public KeyController(Presentation presentation)
+    {
         this.presentation = presentation;
     }
 
-    public void keyPressed(KeyEvent keyEvent) {
+    public void keyPressed(KeyEvent keyEvent)
+    {
         Command command;
-        switch (keyEvent.getKeyCode()) {
+        switch (keyEvent.getKeyCode())
+        {
             case KeyEvent.VK_PAGE_DOWN:
             case KeyEvent.VK_DOWN:
             case KeyEvent.VK_ENTER:

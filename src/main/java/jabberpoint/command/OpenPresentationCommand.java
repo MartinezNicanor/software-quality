@@ -8,22 +8,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class OpenPresentationCommand extends Command {
+public class OpenPresentationCommand extends Command
+{
     private Frame frame;
 
-    public OpenPresentationCommand(Presentation presentation, Frame frame) {
+    public OpenPresentationCommand(Presentation presentation, Frame frame)
+    {
         super(presentation);
         this.frame = frame;
     }
 
     @Override
-    public void execute() {
+    public void execute()
+    {
         presentation.clear();
         Accessor xmlAccessor = new XMLAccessor();
-        try {
+        try
+        {
             xmlAccessor.loadFile(presentation, "test.xml");
             presentation.setSlideNumber(0);
-        } catch (IOException exc) {
+        } catch (IOException exc)
+        {
             JOptionPane.showMessageDialog(frame, "IO Exception: " + exc, "Load Error", JOptionPane.ERROR_MESSAGE);
         }
         this.frame.repaint();

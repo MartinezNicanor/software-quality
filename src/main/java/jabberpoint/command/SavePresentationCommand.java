@@ -8,20 +8,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class SavePresentationCommand extends Command {
+public class SavePresentationCommand extends Command
+{
     private Frame frame;
 
-    public SavePresentationCommand(Presentation presentation, Frame frame) {
+    public SavePresentationCommand(Presentation presentation, Frame frame)
+    {
         super(presentation);
         this.frame = frame;
     }
 
     @Override
-    public void execute() {
+    public void execute()
+    {
         Accessor xmlAccessor = new XMLAccessor();
-        try {
+        try
+        {
             xmlAccessor.saveFile(presentation, "dump.xml");
-        } catch (IOException exc) {
+        } catch (IOException exc)
+        {
             JOptionPane.showMessageDialog(frame, "IO Exception: " + exc, "Save Error", JOptionPane.ERROR_MESSAGE);
         }
     }

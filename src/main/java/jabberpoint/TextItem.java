@@ -23,46 +23,56 @@ import java.util.ArrayList;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class TextItem extends SlideItem {
+public class TextItem extends SlideItem
+{
     private String text;
 
     private static final String EMPTYTEXT = "No Text Given";
 
     // a text item of level, with the text string
-    public TextItem(int level, String string) {
+    public TextItem(int level, String string)
+    {
         super(level);
         text = string;
     }
 
     // an empty text item
-    public TextItem() {
+    public TextItem()
+    {
         this(0, EMPTYTEXT);
     }
 
     // give the text
-    public String getText() {
+    public String getText()
+    {
         return text == null ? "" : text;
     }
 
     // geef de AttributedString voor het item
-    public AttributedString getAttributedString(Style style, float scale) {
+    public AttributedString getAttributedString(Style style, float scale)
+    {
         AttributedString attrStr = new AttributedString(getText());
         attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, text.length());
         return attrStr;
     }
 
     // give the bounding box of the item
-    public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
+    public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
+    {
         List<TextLayout> layouts = getLayouts(g, myStyle, scale);
-        int xsize = 0, ysize = (int) (myStyle.leading * scale);
+        int xsize = 0;
+        int ysize = (int) (myStyle.leading * scale);
         Iterator<TextLayout> iterator = layouts.iterator();
-        while (iterator.hasNext()) {
+        while (iterator.hasNext())
+        {
             TextLayout layout = iterator.next();
             Rectangle2D bounds = layout.getBounds();
-            if (bounds.getWidth() > xsize) {
+            if (bounds.getWidth() > xsize)
+            {
                 xsize = (int) bounds.getWidth();
             }
-            if (bounds.getHeight() > 0) {
+            if (bounds.getHeight() > 0)
+            {
                 ysize += bounds.getHeight();
             }
             ysize += layout.getLeading() + layout.getDescent();
@@ -71,8 +81,10 @@ public class TextItem extends SlideItem {
     }
 
     // draw the item
-    public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o) {
-        if (text == null || text.length() == 0) {
+    public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o)
+    {
+        if (text == null || text.length() == 0)
+        {
             return;
         }
         List<TextLayout> layouts = getLayouts(g, myStyle, scale);
@@ -80,7 +92,8 @@ public class TextItem extends SlideItem {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(myStyle.color);
         Iterator<TextLayout> it = layouts.iterator();
-        while (it.hasNext()) {
+        while (it.hasNext())
+        {
             TextLayout layout = it.next();
             pen.y += layout.getAscent();
             layout.draw(g2d, pen.x, pen.y);
@@ -88,21 +101,24 @@ public class TextItem extends SlideItem {
         }
     }
 
-    private List<TextLayout> getLayouts(Graphics g, Style s, float scale) {
+    private List<TextLayout> getLayouts(Graphics g, Style s, float scale)
+    {
         List<TextLayout> layouts = new ArrayList<TextLayout>();
         AttributedString attrStr = getAttributedString(s, scale);
         Graphics2D g2d = (Graphics2D) g;
         FontRenderContext frc = g2d.getFontRenderContext();
         LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
         float wrappingWidth = (Slide.WIDTH - s.indent) * scale;
-        while (measurer.getPosition() < getText().length()) {
+        while (measurer.getPosition() < getText().length())
+        {
             TextLayout layout = measurer.nextLayout(wrappingWidth);
             layouts.add(layout);
         }
         return layouts;
     }
 
-    public String toString() {
+    public String toString()
+    {
         return "TextItem[" + getLevel() + "," + getText() + "]";
     }
 }

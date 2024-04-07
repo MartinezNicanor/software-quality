@@ -15,7 +15,8 @@ import java.util.Vector;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class Slide {
+public class Slide
+{
     public final static int WIDTH = 1200;
     public final static int HEIGHT = 800;
     protected String title; // title is saved separately
@@ -23,38 +24,46 @@ public class Slide {
     private final SlideItemCreator textItemCreator = new TextItemCreator();
 
 
-    public Slide() {
+    public Slide()
+    {
         items = new Vector<SlideItem>();
     }
 
-    public String getTitle() {
+    public String getTitle()
+    {
         return title;
     }
 
-    public void setTitle(String newTitle) {
+    public void setTitle(String newTitle)
+    {
         title = newTitle;
     }
 
-    public void addSlideItem(SlideItem anItem) {
+    public void addSlideItem(SlideItem anItem)
+    {
         items.addElement(anItem);
     }
 
     // Create TextItem of String, and add the TextItem
-    public void addTextItem(int level, String message) {
+    public void addTextItem(int level, String message)
+    {
         addSlideItem(textItemCreator.createSlideItem(level, message));
     }
 
-    public Vector<SlideItem> getSlideItems() {
+    public Vector<SlideItem> getSlideItems()
+    {
         return items;
     }
 
     // give the size of the Slide
-    public int getSize() {
+    public int getSize()
+    {
         return items.size();
     }
 
     // draw the slide
-    public void draw(Graphics g, Rectangle area, ImageObserver view) {
+    public void draw(Graphics g, Rectangle area, ImageObserver view)
+    {
         float scale = getScale(area);
         int y = area.y;
         // Title is handled separately
@@ -63,7 +72,8 @@ public class Slide {
         slideItem.draw(area.x, y, scale, g, style, view);
         y += slideItem.getBoundingBox(g, view, scale, style).height;
 
-        for (int number = 0; number < getSize(); number++) {
+        for (int number = 0; number < getSize(); number++)
+        {
             slideItem = getSlideItems().elementAt(number);
             style = Style.getStyle(slideItem.getLevel());
             slideItem.draw(area.x, y, scale, g, style, view);
@@ -72,7 +82,8 @@ public class Slide {
     }
 
     // Give the scale for drawing
-    private float getScale(Rectangle area) {
+    private float getScale(Rectangle area)
+    {
         return Math.min(((float) area.width) / ((float) WIDTH), ((float) area.height) / ((float) HEIGHT));
     }
 }
