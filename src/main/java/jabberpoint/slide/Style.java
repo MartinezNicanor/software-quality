@@ -1,4 +1,4 @@
-package jabberpoint;
+package jabberpoint.slide;
 
 import java.awt.Color;
 import java.awt.Font;

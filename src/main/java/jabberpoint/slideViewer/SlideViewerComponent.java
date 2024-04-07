@@ -1,7 +1,7 @@
 package jabberpoint.slideViewer;
 
 import jabberpoint.Presentation;
-import jabberpoint.Slide;
+import jabberpoint.slide.Slide;
 
 import java.awt.Color;
 import java.awt.Font;

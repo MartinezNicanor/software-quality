@@ -1,6 +1,6 @@
-package jabberpoint.slideItemFactory;
+package jabberpoint.slide.slideItemFactory;
 
-import jabberpoint.BitmapItem;
+import jabberpoint.slide.BitmapItem;
 
 public class BitmapItemCreator implements SlideItemCreator
 {

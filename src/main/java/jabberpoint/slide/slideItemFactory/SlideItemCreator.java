@@ -1,6 +1,6 @@
-package jabberpoint.slideItemFactory;
+package jabberpoint.slide.slideItemFactory;
 
-import jabberpoint.SlideItem;
+import jabberpoint.slide.SlideItem;
 
 public interface SlideItemCreator
 {

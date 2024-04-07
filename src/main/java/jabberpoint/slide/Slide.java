@@ -1,8 +1,8 @@
-package jabberpoint;
+package jabberpoint.slide;
 
-import jabberpoint.slideItemFactory.BitmapItemCreator;
-import jabberpoint.slideItemFactory.SlideItemCreator;
-import jabberpoint.slideItemFactory.TextItemCreator;
+import jabberpoint.slide.slideItemFactory.BitmapItemCreator;
+import jabberpoint.slide.slideItemFactory.SlideItemCreator;
+import jabberpoint.slide.slideItemFactory.TextItemCreator;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;

@@ -1,6 +1,6 @@
 package jabberpoint.decorator;
 
-import jabberpoint.Slide;
+import jabberpoint.slide.Slide;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;

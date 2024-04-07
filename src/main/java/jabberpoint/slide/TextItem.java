@@ -1,4 +1,4 @@
-package jabberpoint;
+package jabberpoint.slide;
 
 import java.awt.Rectangle;
 import java.awt.Graphics;

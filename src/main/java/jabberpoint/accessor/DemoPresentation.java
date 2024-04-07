@@ -1,7 +1,7 @@
 package jabberpoint.accessor;
 
 import jabberpoint.Presentation;
-import jabberpoint.Slide;
+import jabberpoint.slide.Slide;
 
 /**
  * A built in demo-presentation

@@ -1,4 +1,4 @@
-package jabberpoint;
+package jabberpoint.slide;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

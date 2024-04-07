@@ -1,6 +1,6 @@
-package jabberpoint.slideItemFactory;
+package jabberpoint.slide.slideItemFactory;
 
-import jabberpoint.TextItem;
+import jabberpoint.slide.TextItem;
 
 public class TextItemCreator implements SlideItemCreator
 {
