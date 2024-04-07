@@ -1,8 +1,5 @@
 package jabberpoint;
 
-import jabberpoint.slideItemFactory.BitmapItemCreator;
-import jabberpoint.slideItemFactory.SlideItemCreator;
-
 /**
  * A built in demo-presentation
  *
@@ -12,9 +9,6 @@ import jabberpoint.slideItemFactory.SlideItemCreator;
 
 class DemoPresentation extends Accessor
 {
-    private final SlideItemCreator bitmapItemCreator = new BitmapItemCreator();
-
-
     public void loadFile(Presentation presentation, String unusedFilename)
     {
         presentation.setTitle("Demo Presentation");
@@ -50,7 +44,7 @@ class DemoPresentation extends Accessor
         slide.addTextItem(2, "use File->Open from the menu.");
         slide.addTextItem(1, " ");
         slide.addTextItem(1, "This is the end of the presentation.");
-        slide.addSlideItem(bitmapItemCreator.createSlideItem(1, "JabberPoint.gif"));
+        slide.addBitmapItem(1, "JabberPoint.gif");
         presentation.append(slide);
     }
 

@@ -1,3 +1,5 @@
+import jabberpoint.BitmapItem;
+import jabberpoint.Style;
 import org.junit.Test;
 
 import java.awt.*;
@@ -7,10 +9,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 
-public class BitmapItemTest {
+public class BitmapItemTest
+{
 
     @Test
-    public void testGetImageName_WhenConstructedWithName_ShouldReturnSameName() {
+    public void testGetImageName_WhenConstructedWithName_ShouldReturnSameName()
+    {
         // Arrange
         String imageName = "test_image.png";
         BitmapItem bitmapItem = new BitmapItem(1, imageName);
@@ -23,7 +27,8 @@ public class BitmapItemTest {
     }
 
     @Test
-    public void testGetImageName_WhenConstructedWithNullName_ShouldReturnNull() {
+    public void testGetImageName_WhenConstructedWithNullName_ShouldReturnNull()
+    {
         // Arrange
         BitmapItem bitmapItem = new BitmapItem(1, null);
 
@@ -35,7 +40,8 @@ public class BitmapItemTest {
     }
 
     @Test
-    public void testToString_WhenConstructedWithName_ShouldReturnExpectedString() {
+    public void testToString_WhenConstructedWithName_ShouldReturnExpectedString()
+    {
         // Arrange
         int level = 1;
         String imageName = "test_image.png";
@@ -50,7 +56,8 @@ public class BitmapItemTest {
     }
 
     @Test
-    public void testToString_WhenConstructedWithNullName_ShouldReturnExpectedString() {
+    public void testToString_WhenConstructedWithNullName_ShouldReturnExpectedString()
+    {
         // Arrange
         int level = 1;
         BitmapItem bitmapItem = new BitmapItem(level, null);
@@ -64,9 +71,10 @@ public class BitmapItemTest {
     }
 
     @Test
-    public void testGetBoundingBox_WhenStyleIsNull_ShouldReturnEmptyRectangle() {
+    public void testGetBoundingBox_WhenStyleIsNull_ShouldReturnEmptyRectangle()
+    {
         // Arrange
-        BitmapItem bitmapItem = new BitmapItem();
+        BitmapItem bitmapItem = new BitmapItem(1, "JabberPoint.gif");
         Graphics g = createGraphicsMock();
         ImageObserver observer = createImageObserverMock();
         float scale = 1.0f;
@@ -80,11 +88,13 @@ public class BitmapItemTest {
     }
 
     // Mock methods to simulate dependencies
-    private Graphics createGraphicsMock() {
+    private Graphics createGraphicsMock()
+    {
         return null;
     }
 
-    private ImageObserver createImageObserverMock() {
+    private ImageObserver createImageObserverMock()
+    {
         return null;
     }
 }

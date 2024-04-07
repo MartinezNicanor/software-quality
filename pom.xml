@@ -73,7 +73,7 @@
                     <failsOnError>true</failsOnError>
                     <sourceDirectories>
                         <sourceDirectory>${basedir}/src/main/java/jabberpoint/</sourceDirectory>
-                        <sourceDirectory>${basedir}src/test/java/jabberpoint/</sourceDirectory>
+                        <sourceDirectory>${basedir}/src/test/java/jabberpoint/</sourceDirectory>
                     </sourceDirectories>
                 </configuration>
             </plugin>

@@ -1,3 +1,6 @@
+import jabberpoint.BitmapItem;
+import jabberpoint.BitmapItemProxy;
+import jabberpoint.Style;
 import org.junit.Test;
 
 import java.awt.*;
@@ -8,12 +11,13 @@ import java.awt.Rectangle;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class BitmapItemProxyTest {
-
+public class BitmapItemProxyTest
+{
 
 
     @Test
-    public void testToString_WhenRealBitmapItemIsNotNull_ShouldDelegateToRealBitmapItem() {
+    public void testToString_WhenRealBitmapItemIsNotNull_ShouldDelegateToRealBitmapItem()
+    {
         // Arrange
         BitmapItemProxy proxy = new BitmapItemProxy(1, "test_image.png");
         BitmapItem realBitmapItem = new BitmapItem(1, "test_image.png");
@@ -27,7 +31,8 @@ public class BitmapItemProxyTest {
     }
 
     @Test
-    public void testLoadImage_WhenImageIsLoadedSuccessfully_ShouldSetRealBitmapItem() {
+    public void testLoadImage_WhenImageIsLoadedSuccessfully_ShouldSetRealBitmapItem()
+    {
         // Arrange
         BitmapItemProxy proxy = new BitmapItemProxy(1, "test_image.png");
 
@@ -40,36 +45,45 @@ public class BitmapItemProxyTest {
     }
 
     // mock methods to simulate dependencies
-    private Graphics createGraphicsMock() {
+    private Graphics createGraphicsMock()
+    {
         return null;
     }
 
-    private ImageObserver createImageObserverMock() {
+    private ImageObserver createImageObserverMock()
+    {
         return null;
     }
 
-    private Style createStyleMock() {
+    private Style createStyleMock()
+    {
         return null;
     }
 
     // method to set private fields
-    private void setPrivateField(Object object, String fieldName, Object value) {
-        try {
+    private void setPrivateField(Object object, String fieldName, Object value)
+    {
+        try
+        {
             Field field = object.getClass().getDeclaredField(fieldName);
             field.setAccessible(true);
             field.set(object, value);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
+        } catch (NoSuchFieldException | IllegalAccessException e)
+        {
             e.printStackTrace();
         }
     }
 
     // method to get private fields
-    private <T> T getPrivateField(Object object, String fieldName) {
-        try {
+    private <T> T getPrivateField(Object object, String fieldName)
+    {
+        try
+        {
             Field field = object.getClass().getDeclaredField(fieldName);
             field.setAccessible(true);
             return (T) field.get(object);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
+        } catch (NoSuchFieldException | IllegalAccessException e)
+        {
             e.printStackTrace();
             return null;
         }
