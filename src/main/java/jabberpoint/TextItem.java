@@ -28,8 +28,6 @@ public class TextItem implements SlideItem
     private String text;
     private int level;
 
-    private static final String EMPTYTEXT = "No Text Given";
-
     // a text item of level, with the text string
     public TextItem(int level, String string)
     {
@@ -47,7 +45,6 @@ public class TextItem implements SlideItem
         return this.level;
     }
 
-    // geef de AttributedString voor het item
     public AttributedString getAttributedString(Style style, float scale)
     {
         AttributedString attrStr = new AttributedString(getText());
@@ -92,6 +89,7 @@ public class TextItem implements SlideItem
         Point pen = new Point(x + (int) (myStyle.indent * scale), y + (int) (myStyle.leading * scale));
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(myStyle.color);
+
         Iterator<TextLayout> it = layouts.iterator();
         while (it.hasNext())
         {

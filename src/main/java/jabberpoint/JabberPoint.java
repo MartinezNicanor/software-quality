@@ -26,7 +26,6 @@ public class JabberPoint
      */
     public static void main(String[] argv)
     {
-
         Style.createStyles();
         Presentation presentation = new Presentation();
         new SlideViewerFrame(JABVERSION, presentation);

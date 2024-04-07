@@ -47,15 +47,15 @@ public class SlideViewerComponent extends JComponent
         return new Dimension(Slide.WIDTH, Slide.HEIGHT);
     }
 
-    public void update(Presentation presentation, Slide data)
+    public void update(Presentation presentation, Slide slide)
     {
-        if (data == null)
+        if (slide == null)
         {
             repaint();
             return;
         }
         this.presentation = presentation;
-        this.slide = data;
+        this.slide = slide;
         repaint();
         frame.setTitle(presentation.getTitle());
     }
@@ -71,8 +71,7 @@ public class SlideViewerComponent extends JComponent
         }
         g.setFont(labelFont);
         g.setColor(COLOR);
-        g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " +
-                presentation.getSize(), XPOS, YPOS);
+        g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " + presentation.getSize(), XPOS, YPOS);
         Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
         slide.draw(g, area, this);
     }

@@ -32,10 +32,10 @@ public class BitmapItem implements SlideItem
 
         try
         {
-            bufferedImage = ImageIO.read(new File(imageName));
+            this.bufferedImage = ImageIO.read(new File(imageName));
         } catch (IOException e)
         {
-            System.err.println("File " + imageName + " not found");
+            throw new RuntimeException("File " + imageName + " not found");
         }
     }
 
