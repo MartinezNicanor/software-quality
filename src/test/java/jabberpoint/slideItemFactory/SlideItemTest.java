@@ -1,12 +1,7 @@
 package jabberpoint.slideItemFactory;
 
 import jabberpoint.Slide;
-import jabberpoint.Style;
-import jabberpoint.TextItem;
 import org.junit.jupiter.api.Test;
-
-import java.awt.*;
-import java.text.AttributedString;
 
 import static org.junit.jupiter.api.Assertions.*;
 
