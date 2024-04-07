@@ -6,8 +6,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
-
-import jabberpoint.BackgroundColorDecorator;
 import jabberpoint.Slide;
 import org.junit.Test;
 

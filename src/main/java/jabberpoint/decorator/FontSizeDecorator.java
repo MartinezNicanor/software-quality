@@ -1,4 +1,6 @@
-package jabberpoint;
+package jabberpoint.decorator;
+
+import jabberpoint.Slide;
 
 import java.awt.Font;
 import java.awt.Graphics;
