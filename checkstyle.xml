@@ -1,0 +1,54 @@
+<!DOCTYPE module PUBLIC
+        "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+        "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<module name="Checker">
+    <property name="severity" value="error"/>
+    <module name="TreeWalker">
+        <!-- Check for file headers -->
+        <module name="Header"/>
+
+        <module name="FileTabCharacter"/>
+        <module name="RegexpSingleline"/>
+        <module name="WhitespaceAround"/>
+        <module name="NoTrailingSpaces"/>
+        <module name="NoWhitespaceBefore"/>
+        <module name="NoWhitespaceAfter"/>
+
+        <!-- Check for naming conventions -->
+        <module name="NameConvention"/>
+
+        <!-- Check for line length -->
+        <module name="LineLength">
+            <!-- Specify maximum line length -->
+            <property name="max" value="120"/>
+        </module>
+
+        <!-- Check for unnecessary code -->
+        <module name="AvoidStarImport"/>
+        <module name="UnusedImports"/>
+        <module name="UnusedPrivateField"/>
+        <module name="UnusedPrivateMethod"/>
+        <module name="UnusedVariable"/>
+
+        <!-- Check for Javadoc comments -->
+        <module name="JavadocMethod"/>
+        <module name="JavadocType"/>
+        <module name="JavadocVariable"/>
+        <module name="JavadocStyle"/>
+
+        <!-- Check for braces usage -->
+        <module name="NeedBraces"/>
+
+        <!-- Check for variable declaration -->
+        <module name="MultipleVariableDeclarations"/>
+
+        <!-- Check for class design -->
+        <module name="DesignForExtension"/>
+
+        <!-- Check for class member visibility -->
+        <module name="VisibilityModifier"/>
+
+        <!-- Check for method complexity -->
+        <module name="CyclomaticComplexity"/>
+    </module>
+</module>
