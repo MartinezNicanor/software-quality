@@ -1,19 +1,23 @@
 package jabberpoint.command;
 
 import jabberpoint.Presentation;
+
 import javax.swing.*;
 
 // Command class to handle going to a specific slide
-public class GoToSlideCommand extends Command {
+public class GoToSlideCommand extends Command
+{
     // Constructor
-    public GoToSlideCommand(Presentation presentation) {
+    public GoToSlideCommand(Presentation presentation)
+    {
         // Calls superclass constructor to initialize presentation reference
         super(presentation);
     }
 
     // Executes the command
     @Override
-    public void execute() {
+    public void execute()
+    {
         // Show a dialog to get slide number from the user
         String pageNumberStr = JOptionPane.showInputDialog((Object) "Page number?");
 

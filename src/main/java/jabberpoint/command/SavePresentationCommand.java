@@ -9,12 +9,14 @@ import java.awt.*;
 import java.io.IOException;
 
 // Command class to handle saving presentation to a file
-public class SavePresentationCommand extends Command {
+public class SavePresentationCommand extends Command
+{
     // Reference to frame associated with presentation
     private Frame frame;
 
     // Constructor
-    public SavePresentationCommand(Presentation presentation, Frame frame) {
+    public SavePresentationCommand(Presentation presentation, Frame frame)
+    {
         // Calls superclass constructor to initialize presentation
         super(presentation);
         // Initializes the frame
@@ -23,14 +25,17 @@ public class SavePresentationCommand extends Command {
 
     // Executes command
     @Override
-    public void execute() {
+    public void execute()
+    {
         // Creates instance of XMLAccessor to save presentation to XML
         Accessor xmlAccessor = new XMLAccessor();
 
-        try {
+        try
+        {
             // Save presentation to XML file "dump.xml"
             xmlAccessor.saveFile(presentation, "dump.xml");
-        } catch (IOException exc) {
+        } catch (IOException exc)
+        {
             // If IOException occurs during saving, show an error message dialog
             JOptionPane.showMessageDialog(frame, "IO Exception: " + exc, "Save Error", JOptionPane.ERROR_MESSAGE);
         }

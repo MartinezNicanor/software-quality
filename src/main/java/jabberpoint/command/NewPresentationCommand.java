@@ -1,15 +1,18 @@
 package jabberpoint.command;
 
 import jabberpoint.Presentation;
+
 import java.awt.*;
 
 // Command class to handle creating a new presentation
-public class NewPresentationCommand extends Command {
+public class NewPresentationCommand extends Command
+{
     // Reference to frame associated with presentation
     private Frame frame;
 
     // Constructor
-    public NewPresentationCommand(Presentation presentation, Frame frame) {
+    public NewPresentationCommand(Presentation presentation, Frame frame)
+    {
         // Call superclass constructor to initialize presentation reference
         super(presentation);
         // Initialize frame reference
@@ -18,7 +21,8 @@ public class NewPresentationCommand extends Command {
 
     // Method to execute command
     @Override
-    public void execute() {
+    public void execute()
+    {
         // Clear presentation
         this.presentation.clear();
         // Repaint frame to reflect changes
