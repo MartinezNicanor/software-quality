@@ -1,23 +1,11 @@
 package jabberpoint;
 
-import java.awt.Rectangle;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
-
-import javax.imageio.ImageIO;
-
 import java.io.IOException;
-
-
-/**
- * <p>De klasse voor een Bitmap item</p>
- * <p>Bitmap items have the responsibility to draw themselves.</p>
- *
- * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.6 2014/05/16 Sylvia Stuurman
- */
+import javax.imageio.ImageIO;
 
 public class BitmapItem implements SlideItem
 {
@@ -35,6 +23,7 @@ public class BitmapItem implements SlideItem
             this.bufferedImage = ImageIO.read(new File(imageName));
         } catch (IOException e)
         {
+            this.bufferedImage = null;
             throw new RuntimeException("File " + imageName + " not found");
         }
     }
@@ -66,14 +55,22 @@ public class BitmapItem implements SlideItem
 
     @Override
     // draw the image
-    public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer)
+    public void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer)
     {
-        int width = x + (int) (myStyle.indent * scale);
-        int height = y + (int) (myStyle.leading * scale);
+        if (style == null || imageName == null)
+        {
+            // handle null style or null image
+            style = new Style(0, Color.BLACK, 0, 0);
+        }
+
+        int width = x + (int) (style.indent * scale);
+        int height = y + (int) (style.leading * scale);
         g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
                 (int) (bufferedImage.getHeight(observer) * scale), observer);
     }
 
+    // Get string representation of BitmapItem
+    @Override
     public String toString()
     {
         return "BitmapItem[" + getLevel() + "," + imageName + "]";

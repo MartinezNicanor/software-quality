@@ -41,7 +41,8 @@ public class TextItem implements SlideItem
         return this.text;
     }
 
-    public int getLevel() {
+    public int getLevel()
+    {
         return this.level;
     }
 
