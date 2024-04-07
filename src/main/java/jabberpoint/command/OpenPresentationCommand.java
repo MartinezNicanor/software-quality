@@ -23,10 +23,12 @@ public class OpenPresentationCommand extends Command
     {
         presentation.clear();
         Accessor xmlAccessor = new XMLAccessor();
-        try {
+        try
+        {
             xmlAccessor.loadFile(presentation, "test.xml");
             presentation.setSlideNumber(0);
-        } catch (IOException exc) {
+        } catch (IOException exc)
+        {
             JOptionPane.showMessageDialog(frame, "IO Exception: " + exc, "Load Error", JOptionPane.ERROR_MESSAGE);
         }
         this.frame.repaint();

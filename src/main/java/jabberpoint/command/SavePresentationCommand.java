@@ -22,9 +22,11 @@ public class SavePresentationCommand extends Command
     public void execute()
     {
         Accessor xmlAccessor = new XMLAccessor();
-        try {
+        try
+        {
             xmlAccessor.saveFile(presentation, "dump.xml");
-        } catch (IOException exc) {
+        } catch (IOException exc)
+        {
             JOptionPane.showMessageDialog(frame, "IO Exception: " + exc, "Save Error", JOptionPane.ERROR_MESSAGE);
         }
     }
