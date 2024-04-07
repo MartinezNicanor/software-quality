@@ -1,6 +1,9 @@
 package jabberpoint.slideItemFactory;
 
-import jabberpoint.Slide;
+import jabberpoint.slide.Slide;
+import jabberpoint.slide.slideItemFactory.BitmapItemCreator;
+import jabberpoint.slide.slideItemFactory.SlideItemCreator;
+import jabberpoint.slide.slideItemFactory.TextItemCreator;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

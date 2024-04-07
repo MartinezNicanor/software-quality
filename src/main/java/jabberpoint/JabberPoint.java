@@ -1,5 +1,10 @@
 package jabberpoint;
 
+import jabberpoint.accessor.Accessor;
+import jabberpoint.accessor.XMLAccessor;
+import jabberpoint.slide.Style;
+import jabberpoint.slideViewer.SlideViewerFrame;
+
 import javax.swing.JOptionPane;
 import java.io.IOException;
 

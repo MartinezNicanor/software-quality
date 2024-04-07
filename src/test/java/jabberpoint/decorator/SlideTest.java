@@ -5,12 +5,12 @@ import static org.junit.Assert.assertEquals;
 import java.awt.Rectangle;
 import java.util.Vector;
 
-import jabberpoint.Slide;
-import jabberpoint.SlideItem;
-import jabberpoint.TextItem;
-import jabberpoint.slideItemFactory.BitmapItemCreator;
-import jabberpoint.slideItemFactory.SlideItemCreator;
-import jabberpoint.slideItemFactory.TextItemCreator;
+import jabberpoint.slide.Slide;
+import jabberpoint.slide.SlideItem;
+import jabberpoint.slide.TextItem;
+import jabberpoint.slide.slideItemFactory.BitmapItemCreator;
+import jabberpoint.slide.slideItemFactory.SlideItemCreator;
+import jabberpoint.slide.slideItemFactory.TextItemCreator;
 import org.junit.Test;
 
 public class SlideTest

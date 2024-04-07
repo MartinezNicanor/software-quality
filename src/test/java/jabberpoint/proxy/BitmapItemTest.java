@@ -1,7 +1,7 @@
 package jabberpoint.proxy;
 
-import jabberpoint.BitmapItem;
-import jabberpoint.Style;
+import jabberpoint.slide.BitmapItem;
+import jabberpoint.slide.Style;
 import org.junit.Test;
 
 import java.awt.*;
