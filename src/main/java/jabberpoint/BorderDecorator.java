@@ -6,7 +6,8 @@ import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
 // Decorator to add border to slides
-public class BorderDecorator extends SlideDecorator {
+public class BorderDecorator extends SlideDecorator
+{
     Color color;
 
     // Different border color options
@@ -16,7 +17,8 @@ public class BorderDecorator extends SlideDecorator {
     public static final Color GREEN = Color.GREEN;
     public static final Color ORANGE = Color.ORANGE;
 
-    public BorderDecorator(Slide decoratedSlide, Color color) {
+    public BorderDecorator(Slide decoratedSlide, Color color)
+    {
         super(decoratedSlide);
         this.color = color;
     }
@@ -28,13 +30,15 @@ public class BorderDecorator extends SlideDecorator {
 
     // Draw border on top of decorated slide
     @Override
-    public void draw(Graphics g, Rectangle area, ImageObserver view) {
+    public void draw(Graphics g, Rectangle area, ImageObserver view)
+    {
         super.draw(g, area, view);
-        if (g != null) {
+        if (g != null)
+        {
             g.setColor(color); // NullPointerException occurs here if g is null
-        } else {
+        } else
+        {
             throw new IllegalArgumentException("Graphics object cannot be null");
         }
     }
-
 }

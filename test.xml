@@ -16,18 +16,18 @@
     </slide>
     <slide>
         <title>An almost empty slide</title>
-        <item kind="text" level="1"> </item>
+        <item kind="text" level="1"></item>
     </slide>
     <slide>
         <title>Achtergrond</title>
         <item kind="text" level="1">Jabberpoint is an exercise for the</item>
         <item kind="text" level="1">course Software Quality from NHL Stenden</item>
-        <item kind="text" level="1"> </item>
+        <item kind="text" level="1"></item>
         <item kind="image" level="2">logo-woordmerk_ou.gif</item>
-        <item kind="text" level="1"> </item>
+        <item kind="text" level="1"></item>
         <item kind="text" level="1">This exersice is developed by the SERC</item>
         <item kind="text" level="1">in collaboration with the Open universiteit</item>
-        <item kind="text" level="1"> </item>
+        <item kind="text" level="1"></item>
         <item kind="image" level="2">serclogo_fc.jpg</item>
     </slide>
     <slide>
@@ -43,7 +43,7 @@
         <title>Laatste slide</title>
         <item kind="text" level="1">Navigation also can be done through the menu</item>
         <item kind="text" level="2">Load presentation: File->Open</item>
-        <item kind="text" level="1"> </item>
+        <item kind="text" level="1"></item>
         <item kind="text" level="1">This is the end of the presentation!</item>
         <item kind="image" level="1">JabberPoint.gif</item>
         <item kind="text" level="1">Goodbye!</item>

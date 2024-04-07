@@ -6,7 +6,8 @@ import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
 // Decorator to change font size of slides
-public class FontSizeDecorator extends SlideDecorator {
+public class FontSizeDecorator extends SlideDecorator
+{
     int fontSize;
 
     // Different font size options
@@ -16,7 +17,8 @@ public class FontSizeDecorator extends SlideDecorator {
     public static final int XLARGE = 22;
     public static final int XXLARGE = 26;
 
-    public FontSizeDecorator(Slide decoratedSlide, int fontSize) {
+    public FontSizeDecorator(Slide decoratedSlide, int fontSize)
+    {
         super(decoratedSlide);
         this.fontSize = fontSize;
     }
@@ -28,14 +30,16 @@ public class FontSizeDecorator extends SlideDecorator {
 
     // Change font size before drawing
     @Override
-    public void draw(Graphics g, Rectangle area, ImageObserver view) {
+    public void draw(Graphics g, Rectangle area, ImageObserver view)
+    {
         super.draw(g, area, view);
-        if (g != null) {
+        if (g != null)
+        {
             Font originalFont = g.getFont();
             g.setFont(originalFont.deriveFont((float) fontSize));
-        } else {
+        } else
+        {
             throw new IllegalArgumentException("Graphics object cannot be null");
         }
     }
-
 }

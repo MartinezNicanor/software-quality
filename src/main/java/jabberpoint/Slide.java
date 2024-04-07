@@ -56,7 +56,8 @@ public class Slide
         addSlideItem(bitmapItemCreator.createSlideItem(level, message));
     }
 
-    public SlideItem getSlideItem(int number) {
+    public SlideItem getSlideItem(int number)
+    {
         return (SlideItem) slideItems.elementAt(number);
     }
 

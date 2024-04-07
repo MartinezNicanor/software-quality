@@ -6,7 +6,8 @@ import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
 // Decorator to add background color to slides
-public class BackgroundColorDecorator extends SlideDecorator {
+public class BackgroundColorDecorator extends SlideDecorator
+{
     Color color;
 
     // Different background color options
@@ -16,7 +17,8 @@ public class BackgroundColorDecorator extends SlideDecorator {
     public static final Color CYAN = Color.CYAN;
     public static final Color PINK = Color.PINK;
 
-    public BackgroundColorDecorator(Slide decoratedSlide, Color color) {
+    public BackgroundColorDecorator(Slide decoratedSlide, Color color)
+    {
         super(decoratedSlide);
         this.color = color;
     }
@@ -28,9 +30,11 @@ public class BackgroundColorDecorator extends SlideDecorator {
 
     // Draw background color on top of decorated slide
     @Override
-    public void draw(Graphics g, Rectangle area, ImageObserver view) {
+    public void draw(Graphics g, Rectangle area, ImageObserver view)
+    {
         super.draw(g, area, view);
-        if (g != null) {
+        if (g != null)
+        {
             g.setColor(color);
             g.fillRect(area.x, area.y, area.width, area.height);
         }

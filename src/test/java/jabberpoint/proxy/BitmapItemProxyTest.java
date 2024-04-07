@@ -8,9 +8,7 @@ import org.junit.Test;
 import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.lang.reflect.Field;
-import java.awt.Rectangle;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class BitmapItemProxyTest

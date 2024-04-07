@@ -1,6 +1,7 @@
 package jabberpoint.decorator;
 
 import static org.junit.Assert.assertTrue;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -10,7 +11,8 @@ import jabberpoint.BackgroundColorDecorator;
 import jabberpoint.Slide;
 import org.junit.Test;
 
-public class BackgroundColorDecoratorTest {
+public class BackgroundColorDecoratorTest
+{
 
     // Mock Slide class for testing
     private static class MockSlide extends Slide
@@ -18,17 +20,20 @@ public class BackgroundColorDecoratorTest {
         private boolean drawCalled = false;
 
         @Override
-        public void draw(Graphics g, Rectangle area, ImageObserver view) {
+        public void draw(Graphics g, Rectangle area, ImageObserver view)
+        {
             drawCalled = true;
         }
 
-        public boolean isDrawCalled() {
+        public boolean isDrawCalled()
+        {
             return drawCalled;
         }
     }
 
     @Test
-    public void testDrawWithBackgroundColor() {
+    public void testDrawWithBackgroundColor()
+    {
         // Create mock slide
         MockSlide mockSlide = new MockSlide();
 
