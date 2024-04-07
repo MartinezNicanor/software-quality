@@ -7,7 +7,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
-import jabberpoint.*;
+import jabberpoint.slide.Slide;
 import org.junit.Test;
 
 public class SlideDecoratorTest
