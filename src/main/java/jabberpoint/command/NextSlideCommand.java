@@ -3,16 +3,13 @@ package jabberpoint.command;
 import jabberpoint.Presentation;
 import jabberpoint.command.Command;
 
-public class NextSlideCommand extends Command
-{
-    public NextSlideCommand(Presentation presentation)
-    {
+public class NextSlideCommand extends Command {
+    public NextSlideCommand(Presentation presentation) {
         super(presentation);
     }
 
     @Override
-    public void execute()
-    {
+    public void execute() {
         this.presentation.nextSlide();
     }
 }
