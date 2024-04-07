@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TextItemCreatorTest
+class SlideItemCreatorTest
 {
     private Slide slide = new Slide();
     private SlideItemCreator textItemCreator = new TextItemCreator();

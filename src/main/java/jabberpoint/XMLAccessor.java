@@ -10,9 +10,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import jabberpoint.slideItemFactory.BitmapItemCreator;
-import jabberpoint.slideItemFactory.SlideItemCreator;
-import jabberpoint.slideItemFactory.TextItemCreator;
 import org.xml.sax.SAXException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -29,10 +26,6 @@ import org.w3c.dom.NodeList;
 
 public class XMLAccessor extends Accessor
 {
-
-    private final SlideItemCreator textItemCreator = new TextItemCreator();
-    private final SlideItemCreator bitmapItemCreator = new BitmapItemCreator();
-
     /**
      * Default API to use.
      */
@@ -126,12 +119,12 @@ public class XMLAccessor extends Accessor
         String type = attributes.getNamedItem(KIND).getTextContent();
         if (TEXT.equals(type))
         {
-            slide.addSlideItem(textItemCreator.createSlideItem(level, item.getTextContent()));
+            slide.addTextItem(level, item.getTextContent());
         } else
         {
             if (IMAGE.equals(type))
             {
-                slide.addSlideItem(bitmapItemCreator.createSlideItem(level, item.getTextContent()));
+                slide.addBitmapItem(level, item.getTextContent());
             } else
             {
                 System.err.println(UNKNOWNTYPE);
@@ -167,7 +160,7 @@ public class XMLAccessor extends Accessor
                     if (slideItem instanceof BitmapItem)
                     {
                         out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
-                        out.print(((BitmapItem) slideItem).getName());
+                        out.print(((BitmapItem) slideItem).getImageName());
                     } else
                     {
                         System.out.println("Ignoring " + slideItem);

@@ -19,40 +19,42 @@ import java.io.IOException;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class BitmapItem extends SlideItem
+public class BitmapItem implements SlideItem
 {
     private BufferedImage bufferedImage;
     private String imageName;
+    private int level;
 
-    protected static final String FILE = "File ";
-    protected static final String NOTFOUND = " not found";
-
-    // level is equal to item-level; name is the name of the file with the Image
-    public BitmapItem(int level, String name)
+    public BitmapItem(int level, String imageName)
     {
-        super(level);
-        imageName = name;
+        this.level = level;
+        this.imageName = imageName;
+
         try
         {
             bufferedImage = ImageIO.read(new File(imageName));
         } catch (IOException e)
         {
-            System.err.println(FILE + imageName + NOTFOUND);
+            System.err.println("File " + imageName + " not found");
         }
     }
 
-    // An empty bitmap-item
-    public BitmapItem()
+    public String getImageName()
     {
-        this(0, null);
+        return this.imageName;
     }
 
-    // give the filename of the image
-    public String getName()
+    public BufferedImage getBufferedImage()
     {
-        return imageName;
+        return this.bufferedImage;
     }
 
+    public int getLevel()
+    {
+        return this.level;
+    }
+
+    @Override
     // give the  bounding box of the image
     public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
     {
@@ -62,6 +64,7 @@ public class BitmapItem extends SlideItem
                         (int) (bufferedImage.getHeight(observer) * scale));
     }
 
+    @Override
     // draw the image
     public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer)
     {

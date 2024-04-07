@@ -23,29 +23,28 @@ import java.util.ArrayList;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class TextItem extends SlideItem
+public class TextItem implements SlideItem
 {
     private String text;
+    private int level;
 
     private static final String EMPTYTEXT = "No Text Given";
 
     // a text item of level, with the text string
     public TextItem(int level, String string)
     {
-        super(level);
-        text = string;
-    }
-
-    // an empty text item
-    public TextItem()
-    {
-        this(0, EMPTYTEXT);
+        this.level = level;
+        this.text = string;
     }
 
     // give the text
     public String getText()
     {
-        return text == null ? "" : text;
+        return this.text;
+    }
+
+    public int getLevel() {
+        return this.level;
     }
 
     // geef de AttributedString voor het item
@@ -56,6 +55,7 @@ public class TextItem extends SlideItem
         return attrStr;
     }
 
+    @Override
     // give the bounding box of the item
     public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
     {
@@ -80,6 +80,7 @@ public class TextItem extends SlideItem
         return new Rectangle((int) (myStyle.indent * scale), 0, xsize, ysize);
     }
 
+    @Override
     // draw the item
     public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o)
     {
