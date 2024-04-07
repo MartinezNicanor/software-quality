@@ -1,4 +1,8 @@
-package jabberpoint;
+package jabberpoint.proxy;
+
+import jabberpoint.BitmapItem;
+import jabberpoint.SlideItem;
+import jabberpoint.Style;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
