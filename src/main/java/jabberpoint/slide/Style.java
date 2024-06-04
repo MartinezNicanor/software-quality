@@ -4,7 +4,6 @@ import java.awt.*;
 
 public class Style
 {
-    private static final String FONT_NAME = "Helvetica";
     private static Style[] styles;
     public int indent;
     public Color color;
@@ -17,7 +16,7 @@ public class Style
     {
         this.indent = indent;
         this.color = color;
-        font = new Font(FONT_NAME, Font.BOLD, fontSize = points); // Create font
+        font = new Font("Helvetica", Font.BOLD, fontSize = points); // Create font
         this.leading = leading;
     }
 
