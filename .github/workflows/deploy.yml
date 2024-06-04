@@ -1,9 +1,10 @@
-name: Java Deployment to Google App Engine
+name: Build, Test and Deploy JAR
 
 on:
   push:
     branches:
       - main
+      - acceptance
 
 jobs:
   deploy:
@@ -19,17 +20,17 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+          
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
 
-      - name: Authenticate with Google Cloud
-        uses: google-github-actions/auth@v2
+      - name: Run tests with Maven
+        run: mvn -B package test --file pom.xml
+
+      - name: Upload JAR files
+        run: mkdir staging && cp target/*.jar staging
+      - uses: actions/upload-artifact@v4
         with:
-          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
-
-      - name: Install Google Cloud SDK
-        run: |
-          curl https://sdk.cloud.google.com | bash
-          exec -l $SHELL
-
-      - name: Deploy to Google App Engine
-        run: |
-          gcloud app deploy --version=main --quiet
+          name: Package
+          path: staging
+        
