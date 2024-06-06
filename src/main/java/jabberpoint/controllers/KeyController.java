@@ -39,6 +39,7 @@ public class KeyController extends KeyAdapter
         commandMap.put((int) 'Q', new ExitPresentationCommand(presentation));
     }
 
+    // Method to handle key presses
     public void keyPressed(KeyEvent keyEvent)
     {
         Command command = commandMap.get(keyEvent.getKeyCode());

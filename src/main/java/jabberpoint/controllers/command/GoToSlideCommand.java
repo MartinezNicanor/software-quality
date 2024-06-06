@@ -5,14 +5,16 @@ import jabberpoint.slideViewer.SlideViewerComponent;
 
 import javax.swing.*;
 
+// Command class to handle going to a specific slide
 public class GoToSlideCommand extends Command
 {
-
     public GoToSlideCommand(Presentation presentation)
     {
+        // Calls superclass constructor to initialize presentation reference
         super(presentation);
     }
 
+    // Executes the command
     @Override
     public void execute()
     {

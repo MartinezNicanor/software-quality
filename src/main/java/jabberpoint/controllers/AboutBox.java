@@ -13,6 +13,7 @@ import java.awt.*;
  */
 public class AboutBox
 {
+    // Displays About Box dialog
     public static void show(Frame parent)
     {
         JOptionPane.showMessageDialog(parent,

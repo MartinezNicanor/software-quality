@@ -21,13 +21,14 @@ import java.io.IOException;
 public class JabberPoint
 {
 
-    /**
-     * The main program.
-     */
+    // The main program
     public static void main(String[] argv)
     {
+        // Create styles
         Style.createStyles();
+        // Create new presentation object
         Presentation presentation = new Presentation();
+        // Create and display main frame of presentation
         new SlideViewerFrame("Jabberpoint 1.6 - OU version", presentation);
         try
         {
@@ -38,9 +39,11 @@ public class JabberPoint
             {
                 new XMLAccessor().loadFile(presentation, argv[0]);
             }
+            // Set the slide number to start from beginning
             presentation.setSlideNumber(0);
         } catch (IOException ex)
         {
+            // Display error message if IO error occurs during loading
             JOptionPane.showMessageDialog(null, "IO Error: " + ex, "Jabberpoint Error ", JOptionPane.ERROR_MESSAGE);
         }
     }

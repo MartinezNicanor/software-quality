@@ -28,7 +28,7 @@ public class BackgroundColorDecorator extends SlideDecorator
         return color;
     }
 
-    // Draw background color on top of decorated slide
+    // Draws background color on top of decorated slide
     @Override
     public void draw(Graphics g, Rectangle area, ImageObserver view)
     {

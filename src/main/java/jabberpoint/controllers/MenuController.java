@@ -16,18 +16,20 @@ import java.awt.event.ActionListener;
 public class MenuController extends MenuBar
 {
 
-    private Frame frame; // the frame, only used as parent for the Dialogs
-    private Presentation presentation; // Commands are given to the presentation
+    private Frame frame;
+    private Presentation presentation;
     private MenuItem menuItem;
     private Menu fileMenu = new Menu("File");
     private Menu viewMenu = new Menu("View");
     private Menu helpMenu = new Menu("Help");
 
+    // Constructor
     public MenuController(Frame frame, Presentation presentation)
     {
         this.frame = frame;
         this.presentation = presentation;
 
+        // Initialize menu items
         openPresentation();
         newPresentation();
         savePresentation();
@@ -42,6 +44,7 @@ public class MenuController extends MenuBar
         setHelpMenu(helpMenu); // needed for portability (Motif, etc.).
     }
 
+    // Method to create and add "Open" menu item
     public void openPresentation()
     {
         fileMenu.add(this.menuItem = mkMenuItem("Open"));
@@ -55,6 +58,7 @@ public class MenuController extends MenuBar
         });
     }
 
+    // Method to create and add "New" menu item
     public void newPresentation()
     {
         fileMenu.add(this.menuItem = mkMenuItem("New"));
@@ -68,6 +72,7 @@ public class MenuController extends MenuBar
         });
     }
 
+    // Method to create and add "Save" menu item
     public void savePresentation()
     {
         fileMenu.add(this.menuItem = mkMenuItem("Save"));
@@ -81,6 +86,7 @@ public class MenuController extends MenuBar
         });
     }
 
+    // Method to create and add "Exit" menu item
     public void exitPresentation()
     {
         fileMenu.add(this.menuItem = mkMenuItem("Exit"));
@@ -94,6 +100,7 @@ public class MenuController extends MenuBar
         });
     }
 
+    // Method to create and add "Next" menu item
     public void nextSlide()
     {
         viewMenu.add(this.menuItem = mkMenuItem("Next"));
@@ -107,6 +114,7 @@ public class MenuController extends MenuBar
         });
     }
 
+    // Method to create and add "Previous" menu item
     public void previousSlide()
     {
         viewMenu.add(this.menuItem = mkMenuItem("Prev"));
@@ -120,6 +128,7 @@ public class MenuController extends MenuBar
         });
     }
 
+    // Method to create and add "Go To" menu item
     public void goToSlide()
     {
         viewMenu.add(this.menuItem = mkMenuItem("Go To"));
@@ -133,6 +142,7 @@ public class MenuController extends MenuBar
         });
     }
 
+    // Method to create and add "About" menu item
     public void openAboutBox()
     {
         helpMenu.add(this.menuItem = mkMenuItem("About"));

@@ -74,6 +74,7 @@ public class XMLAccessor extends Accessor
         }
     }
 
+    // Loads a slide item from XML element and adds it to slide
     protected void loadSlideItem(Slide slide, Element item)
     {
         int level = parseLevel(item);
