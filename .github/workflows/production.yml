@@ -43,6 +43,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: release/
+          asset_path: release/Jabberpoint-1.0-SNAPSHOT.jar
           asset_name: Jabberpoint-1.0-SNAPSHOT.jar
           asset_content_type: application/java-archive
