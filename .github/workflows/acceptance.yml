@@ -1,9 +1,8 @@
-name: Build, Test and Deploy JAR
+name: Build, test, check style and deploy JAR to artifacts
 
 on:
   push:
     branches:
-      - main
       - acceptance
 
 jobs:
@@ -26,6 +25,9 @@ jobs:
 
       - name: Run tests with Maven
         run: mvn -B package test --file pom.xml
+
+      - name: Check Code Style
+        run: mvn checkstyle:check
 
       - name: Upload JAR files
         run: mkdir staging && cp target/*.jar staging
