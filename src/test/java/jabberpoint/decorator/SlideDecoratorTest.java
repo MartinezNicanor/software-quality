@@ -1,14 +1,13 @@
 package jabberpoint.decorator;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
-
 import jabberpoint.slide.Slide;
 import org.junit.Test;
+
+import java.awt.*;
+import java.awt.image.ImageObserver;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class SlideDecoratorTest
 {

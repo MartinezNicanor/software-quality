@@ -4,8 +4,7 @@ import jabberpoint.slide.BitmapItem;
 import jabberpoint.slide.SlideItem;
 import jabberpoint.slide.Style;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.ImageObserver;
 
 public class BitmapItemProxy implements SlideItem

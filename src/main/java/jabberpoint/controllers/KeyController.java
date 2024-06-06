@@ -6,8 +6,8 @@ import jabberpoint.controllers.command.ExitPresentationCommand;
 import jabberpoint.controllers.command.NextSlideCommand;
 import jabberpoint.controllers.command.PreviousSlideCommand;
 
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,7 +43,8 @@ public class KeyController extends KeyAdapter
     {
         Command command = commandMap.get(keyEvent.getKeyCode());
 
-        if (command != null) {
+        if (command != null)
+        {
             command.execute();
         }
     }

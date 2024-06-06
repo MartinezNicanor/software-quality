@@ -1,13 +1,12 @@
 package jabberpoint.decorator;
 
-import static org.junit.Assert.assertTrue;
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
 import jabberpoint.slide.Slide;
 import org.junit.Test;
+
+import java.awt.*;
+import java.awt.image.ImageObserver;
+
+import static org.junit.Assert.assertTrue;
 
 public class BackgroundColorDecoratorTest
 {

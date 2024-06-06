@@ -5,7 +5,7 @@ import jabberpoint.accessor.XMLAccessor;
 import jabberpoint.slide.Style;
 import jabberpoint.slideViewer.SlideViewerFrame;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import java.io.IOException;
 
 /**

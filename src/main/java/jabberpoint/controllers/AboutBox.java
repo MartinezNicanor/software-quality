@@ -1,7 +1,7 @@
 package jabberpoint.controllers;
 
-import java.awt.Frame;
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * AboutBox displays information about JabberPoint.
