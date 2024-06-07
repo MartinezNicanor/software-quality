@@ -20,7 +20,7 @@ jobs:
           cache: maven
 
       - name: Copy image file
-        run: cp path/to/jabberpoint.gif .
+        run: cp jabberpoint.gif .
 
       - name: Build with Maven
         run: mvn -B package --file pom.xml
