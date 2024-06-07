@@ -1,7 +1,7 @@
 package jabberpoint.controllers.command;
 
-import jabberpoint.accessor.Accessor;
 import jabberpoint.Presentation;
+import jabberpoint.accessor.Accessor;
 import jabberpoint.accessor.XMLAccessor;
 
 import javax.swing.*;

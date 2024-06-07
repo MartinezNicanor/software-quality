@@ -1,11 +1,11 @@
 package jabberpoint.slide;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 
 public class BitmapItem implements SlideItem
 {
@@ -28,7 +28,8 @@ public class BitmapItem implements SlideItem
         }
     }
 
-    public String getImageName()
+    @Override
+    public String getText()
     {
         return this.imageName;
     }
@@ -36,6 +37,11 @@ public class BitmapItem implements SlideItem
     public BufferedImage getBufferedImage()
     {
         return this.bufferedImage;
+    }
+
+    public void setBufferedImage(BufferedImage bufferedImage)
+    {
+        this.bufferedImage = bufferedImage;
     }
 
     public int getLevel()

@@ -2,8 +2,7 @@ package jabberpoint.decorator;
 
 import jabberpoint.slide.Slide;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.ImageObserver;
 
 // Base decorator class for slides

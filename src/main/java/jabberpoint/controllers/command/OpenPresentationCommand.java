@@ -1,7 +1,7 @@
 package jabberpoint.controllers.command;
 
-import jabberpoint.accessor.Accessor;
 import jabberpoint.Presentation;
+import jabberpoint.accessor.Accessor;
 import jabberpoint.accessor.XMLAccessor;
 
 import javax.swing.*;
@@ -12,7 +12,7 @@ import java.io.IOException;
 public class OpenPresentationCommand extends Command
 {
     // Reference to frame associated with presentation
-    private Frame frame;
+    private final Frame frame;
 
     // Constructor
     public OpenPresentationCommand(Presentation presentation, Frame frame)
