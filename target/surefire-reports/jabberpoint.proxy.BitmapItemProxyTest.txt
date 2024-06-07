@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: jabberpoint.proxy.BitmapItemProxyTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.232 sec - in jabberpoint.proxy.BitmapItemProxyTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.199 sec - in jabberpoint.proxy.BitmapItemProxyTest

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="jabberpoint.slide.SlideTest" time="0.376" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="jabberpoint.slide.SlideTest" time="0.378" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2022.3.3"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -66,14 +66,14 @@
     <property name="sun.stdout.encoding" value="UTF-8"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="draw_SlideDrawnCorrectlyOnGraphicsContext" classname="jabberpoint.slide.SlideTest" time="0.353"/>
-  <testcase name="constructor_ZeroSlideItems" classname="jabberpoint.slide.SlideTest" time="0"/>
-  <testcase name="getSlideItem_ReturnsCorrectSlideItem" classname="jabberpoint.slide.SlideTest" time="0.004"/>
+  <testcase name="draw_SlideDrawnCorrectlyOnGraphicsContext" classname="jabberpoint.slide.SlideTest" time="0.352"/>
+  <testcase name="constructor_ZeroSlideItems" classname="jabberpoint.slide.SlideTest" time="0.001"/>
+  <testcase name="getSlideItem_ReturnsCorrectSlideItem" classname="jabberpoint.slide.SlideTest" time="0.003"/>
   <testcase name="addTextItem_TextItemAddedToSlide" classname="jabberpoint.slide.SlideTest" time="0.001"/>
   <testcase name="getScale_ReturnsCorrectScaleForGivenArea" classname="jabberpoint.slide.SlideTest" time="0.001"/>
   <testcase name="addBitmapItem_BitmapItemAddedToSlide" classname="jabberpoint.slide.SlideTest" time="0.004"/>
   <testcase name="getAmountOfSlideItems_ReturnsCorrectAmount" classname="jabberpoint.slide.SlideTest" time="0.004"/>
-  <testcase name="getSlideItems_ReturnsAllSlideItems" classname="jabberpoint.slide.SlideTest" time="0.004"/>
-  <testcase name="getTitle_ReturnsTitle" classname="jabberpoint.slide.SlideTest" time="0"/>
-  <testcase name="setTitle_NewTitleSet" classname="jabberpoint.slide.SlideTest" time="0"/>
+  <testcase name="getSlideItems_ReturnsAllSlideItems" classname="jabberpoint.slide.SlideTest" time="0.003"/>
+  <testcase name="getTitle_ReturnsTitle" classname="jabberpoint.slide.SlideTest" time="0.001"/>
+  <testcase name="setTitle_NewTitleSet" classname="jabberpoint.slide.SlideTest" time="0.001"/>
 </testsuite>

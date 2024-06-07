@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="jabberpoint.controllers.command.OpenPresentationCommandTest" time="0.049" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="jabberpoint.controllers.command.OpenPresentationCommandTest" time="0.048" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2022.3.3"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -67,5 +67,5 @@
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
   <testcase name="openPresentation_ChangePresentationSize_AssertEqualsTrue" classname="jabberpoint.controllers.command.OpenPresentationCommandTest" time="0.022"/>
-  <testcase name="openPresentation_SetSlideNumberTo0_AssertEqualsTrue" classname="jabberpoint.controllers.command.OpenPresentationCommandTest" time="0.024"/>
+  <testcase name="openPresentation_SetSlideNumberTo0_AssertEqualsTrue" classname="jabberpoint.controllers.command.OpenPresentationCommandTest" time="0.025"/>
 </testsuite>
