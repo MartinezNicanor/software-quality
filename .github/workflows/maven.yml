@@ -19,12 +19,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Find image file
-        run: |
-          find . -name "Jabberpoint.gif" -exec cp {} . \;
-
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
       - name: Run tests with Maven
-        run: mvn -B package test --file pom.xml
+        run: mvn test --file pom.xml
