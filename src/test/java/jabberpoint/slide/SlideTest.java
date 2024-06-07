@@ -54,17 +54,17 @@ class SlideTest {
 
     @Test
     void addBitmapItem_BitmapItemAddedToSlide() {
-        slide.addBitmapItem(1, "jabberpoint.gif");
+        slide.addBitmapItem(1, "Jabberpoint.gif");
         assertEquals(1, slide.getAmountOfSlideItems());
         SlideItem item = slide.getSlideItem(0);
         assertTrue(item instanceof BitmapItem);
-        assertEquals("jabberpoint.gif", ((BitmapItem) item).getImageName());
+        assertEquals("Jabberpoint.gif", ((BitmapItem) item).getImageName());
     }
 
     @Test
     void getSlideItem_ReturnsCorrectSlideItem() {
         slide.addTextItem(1, "Sample Text");
-        slide.addBitmapItem(1, "jabberpoint.gif");
+        slide.addBitmapItem(1, "Jabberpoint.gif");
 
         SlideItem textItem = slide.getSlideItem(0);
         SlideItem bitmapItem = slide.getSlideItem(1);
@@ -76,7 +76,7 @@ class SlideTest {
     @Test
     void getSlideItems_ReturnsAllSlideItems() {
         slide.addTextItem(1, "Sample Text");
-        slide.addBitmapItem(1, "jabberpoint.gif");
+        slide.addBitmapItem(1, "Jabberpoint.gif");
 
         Vector<SlideItem> items = slide.getSlideItems();
         assertEquals(2, items.size());
@@ -86,7 +86,7 @@ class SlideTest {
     void getAmountOfSlideItems_ReturnsCorrectAmount() {
         assertEquals(0, slide.getAmountOfSlideItems());
         slide.addTextItem(1, "Sample Text");
-        slide.addBitmapItem(1, "jabberpoint.gif");
+        slide.addBitmapItem(1, "Jabberpoint.gif");
         assertEquals(2, slide.getAmountOfSlideItems());
     }
 
@@ -100,7 +100,7 @@ class SlideTest {
 
         slide.setTitle("Title");
         slide.addTextItem(1, "Sample Text");
-        slide.addBitmapItem(1, "jabberpoint.gif");
+        slide.addBitmapItem(1, "Jabberpoint.gif");
 
         // Draw slide on the real Graphics2D context
         slide.draw(graphics, area, observer);

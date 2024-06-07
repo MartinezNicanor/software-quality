@@ -22,7 +22,7 @@ public class BitmapItemProxyTest {
 
     @BeforeEach
     public void setUp() {
-        bitmapItemProxy = new BitmapItemProxy(1, "jabberpoint.gif");
+        bitmapItemProxy = new BitmapItemProxy(1, "Jabberpoint.gif");
         realBitmapItemMock = mock(BitmapItem.class);
         graphicsMock = mock(Graphics.class);
         imageObserverMock = mock(ImageObserver.class);
@@ -68,16 +68,16 @@ public class BitmapItemProxyTest {
 
     @Test
     public void toString_Placeholder_ReturnsCorrectStringRepresentation() {
-        assertEquals("BitmapItemProxy[1,jabberpoint.gif]", bitmapItemProxy.toString());
+        assertEquals("BitmapItemProxy[1,Jabberpoint.gif]", bitmapItemProxy.toString());
     }
 
     @Test
     public void toString_RealItem_ReturnsStringRepresentationFromRealItem() {
         bitmapItemProxy.loadImage();
         bitmapItemProxy.realBitmapItem = realBitmapItemMock;
-        when(realBitmapItemMock.toString()).thenReturn("BitmapItem[1,jabberpoint.gif]");
+        when(realBitmapItemMock.toString()).thenReturn("BitmapItem[1,Jabberpoint.gif]");
 
-        assertEquals("BitmapItem[1,jabberpoint.gif]", bitmapItemProxy.toString());
+        assertEquals("BitmapItem[1,Jabberpoint.gif]", bitmapItemProxy.toString());
     }
 
     @Test

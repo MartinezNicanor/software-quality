@@ -19,7 +19,7 @@ public class BitmapItemTest {
 
     @BeforeEach
     public void setUp() {
-        bitmapItem = new BitmapItem(1, "jabberpoint.gif");
+        bitmapItem = new BitmapItem(1, "Jabberpoint.gif");
         bitmapItem.setBufferedImage(null);
         graphicsMock = mock(Graphics.class);
         imageObserverMock = mock(ImageObserver.class);
@@ -33,7 +33,7 @@ public class BitmapItemTest {
 
     @Test
     public void toString_ReturnsExpectedStringRepresentation() {
-        assertEquals("BitmapItem[1,jabberpoint.gif]", bitmapItem.toString());
+        assertEquals("BitmapItem[1,Jabberpoint.gif]", bitmapItem.toString());
     }
 
     @Test
