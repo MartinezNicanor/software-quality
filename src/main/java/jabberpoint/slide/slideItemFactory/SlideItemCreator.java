@@ -4,5 +4,5 @@ import jabberpoint.slide.SlideItem;
 
 public interface SlideItemCreator
 {
-    public SlideItem createSlideItem(int level, String string);
+    public SlideItem createSlideItem(int level, String text);
 }

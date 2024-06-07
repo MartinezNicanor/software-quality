@@ -4,15 +4,14 @@ import jabberpoint.slide.BitmapItem;
 import jabberpoint.slide.SlideItem;
 import jabberpoint.slide.Style;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.ImageObserver;
 
 public class BitmapItemProxy implements SlideItem
 {
     private String imageName; // The name of the image file
     private int level;
-    private BitmapItem realBitmapItem; // The real BitmapItem object
+    protected BitmapItem realBitmapItem; // The real BitmapItem object
 
     // Constructor
     public BitmapItemProxy(int level, String name)
@@ -20,6 +19,8 @@ public class BitmapItemProxy implements SlideItem
         this.level = level;
         this.imageName = name;
     }
+
+
 
     // Get bounding box
     @Override
@@ -49,6 +50,12 @@ public class BitmapItemProxy implements SlideItem
             // Delegate the call to real BitmapItem object
             realBitmapItem.draw(x, y, scale, g, myStyle, observer);
         }
+    }
+
+    @Override
+    public String getText()
+    {
+        return imageName;
     }
 
     @Override

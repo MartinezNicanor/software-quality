@@ -1,13 +1,13 @@
 package jabberpoint.controllers.command;
 
 import jabberpoint.Presentation;
+import jabberpoint.slideViewer.SlideViewerComponent;
 
 import javax.swing.*;
 
 // Command class to handle going to a specific slide
 public class GoToSlideCommand extends Command
 {
-    // Constructor
     public GoToSlideCommand(Presentation presentation)
     {
         // Calls superclass constructor to initialize presentation reference
@@ -18,13 +18,25 @@ public class GoToSlideCommand extends Command
     @Override
     public void execute()
     {
-        // Show a dialog to get slide number from the user
+        SlideViewerComponent parent = this.presentation.getSlideViewComponent();
         String pageNumberStr = JOptionPane.showInputDialog((Object) "Page number?");
+        int pageNumber = 0;
 
-        // Convert input string to an integer representing slide number
-        int pageNumber = Integer.parseInt(pageNumberStr);
+        try
+        {
+            pageNumber = Integer.parseInt(pageNumberStr);
+        } catch (NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(parent, "A number must be provided");
+            return;
+        }
 
-        // Set slide number in presentation (subtracting 1)
-        presentation.setSlideNumber(pageNumber - 1);
+        if (pageNumber > this.presentation.getSize() || pageNumber <= 0)
+        {
+            JOptionPane.showMessageDialog(parent, "Provide a valid page number");
+            return;
+        }
+
+        this.presentation.setSlideNumber(pageNumber - 1);
     }
 }

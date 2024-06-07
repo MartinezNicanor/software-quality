@@ -6,8 +6,10 @@ import jabberpoint.controllers.command.ExitPresentationCommand;
 import jabberpoint.controllers.command.NextSlideCommand;
 import jabberpoint.controllers.command.PreviousSlideCommand;
 
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>This is the KeyController (KeyListener)</p>
@@ -18,49 +20,31 @@ import java.awt.event.KeyAdapter;
 
 public class KeyController extends KeyAdapter
 {
-    private Presentation presentation; // Commands are given to the presentation
+    private final Map<Integer, Command> commandMap;
 
-    // Constructor
     public KeyController(Presentation presentation)
     {
-        this.presentation = presentation;
+        this.commandMap = new HashMap<>();
+        commandMap.put(KeyEvent.VK_PAGE_DOWN, new NextSlideCommand(presentation));
+        commandMap.put(KeyEvent.VK_DOWN, new NextSlideCommand(presentation));
+        commandMap.put(KeyEvent.VK_ENTER, new NextSlideCommand(presentation));
+        commandMap.put((int) '+', new NextSlideCommand(presentation));
+        commandMap.put(KeyEvent.VK_PAGE_UP, new PreviousSlideCommand(presentation));
+        commandMap.put(KeyEvent.VK_UP, new PreviousSlideCommand(presentation));
+        commandMap.put((int) '-', new PreviousSlideCommand(presentation));
+        commandMap.put((int) 'q', new ExitPresentationCommand(presentation));
+        commandMap.put((int) 'Q', new ExitPresentationCommand(presentation));
     }
 
     // Method to handle key presses
+    @Override
     public void keyPressed(KeyEvent keyEvent)
     {
-        Command command;
+        Command command = commandMap.get(keyEvent.getKeyCode());
 
-        // Switch statement to determine action based on key pressed
-        switch (keyEvent.getKeyCode())
+        if (command != null)
         {
-            // Next slide actions
-            case KeyEvent.VK_PAGE_DOWN:
-            case KeyEvent.VK_DOWN:
-            case KeyEvent.VK_ENTER:
-            case '+':
-                command = new NextSlideCommand(this.presentation);
-                command.execute();
-                break;
-
-            // Previous slide actions
-            case KeyEvent.VK_PAGE_UP:
-            case KeyEvent.VK_UP:
-            case '-':
-                command = new PreviousSlideCommand(this.presentation);
-                command.execute();
-                break;
-
-            // Exit presentation action
-            case 'q':
-            case 'Q':
-                command = new ExitPresentationCommand(this.presentation);
-                command.execute();
-                break; // Probably never reached!!
-
-            // No action for other keys
-            default:
-                break;
+            command.execute();
         }
     }
 }

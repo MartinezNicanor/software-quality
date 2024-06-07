@@ -3,13 +3,8 @@ package jabberpoint.slideViewer;
 import jabberpoint.Presentation;
 import jabberpoint.slide.Slide;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
 
 
 /**
@@ -33,6 +28,26 @@ public class SlideViewerComponent extends JComponent
         presentation = pres;
         labelFont = new Font("Dialog", Font.BOLD, 10);
         this.frame = frame;
+    }
+
+    public Slide getSlide()
+    {
+        return slide;
+    }
+
+    public void setSlide(Slide slide)
+    {
+        this.slide = slide;
+    }
+
+    public Presentation getPresentation()
+    {
+        return presentation;
+    }
+
+    public void setPresentation(Presentation presentation)
+    {
+        this.presentation = presentation;
     }
 
     public Dimension getPreferredSize()

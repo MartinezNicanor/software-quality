@@ -4,8 +4,7 @@ import jabberpoint.slide.slideItemFactory.BitmapItemCreator;
 import jabberpoint.slide.slideItemFactory.SlideItemCreator;
 import jabberpoint.slide.slideItemFactory.TextItemCreator;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.util.Vector;
 
