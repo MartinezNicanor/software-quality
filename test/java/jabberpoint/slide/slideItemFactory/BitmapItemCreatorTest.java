@@ -14,6 +14,6 @@ class BitmapItemCreatorTest
         BitmapItem bitmapItem = factory.createSlideItem(1, "Jabberpoint.gif");
 
         assertEquals(1, bitmapItem.getLevel());
-        assertEquals("Jabberpoint.gif", bitmapItem.getImageName());
+        assertEquals("Jabberpoint.gif", bitmapItem.getText());
     }
 }

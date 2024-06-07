@@ -28,7 +28,8 @@ public class BitmapItem implements SlideItem
         }
     }
 
-    public String getImageName()
+    @Override
+    public String getText()
     {
         return this.imageName;
     }

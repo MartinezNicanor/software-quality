@@ -35,6 +35,7 @@ public class TextItem implements SlideItem
     }
 
     // Get text
+    @Override
     public String getText()
     {
         return this.text;

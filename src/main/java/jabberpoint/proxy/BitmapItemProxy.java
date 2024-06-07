@@ -20,6 +20,8 @@ public class BitmapItemProxy implements SlideItem
         this.imageName = name;
     }
 
+
+
     // Get bounding box
     @Override
     public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
@@ -48,6 +50,12 @@ public class BitmapItemProxy implements SlideItem
             // Delegate the call to real BitmapItem object
             realBitmapItem.draw(x, y, scale, g, myStyle, observer);
         }
+    }
+
+    @Override
+    public String getText()
+    {
+        return imageName;
     }
 
     @Override

@@ -19,5 +19,7 @@ public interface SlideItem
     // Draw the item
     public void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer);
 
+    String getText();
+
     int getLevel();
 }

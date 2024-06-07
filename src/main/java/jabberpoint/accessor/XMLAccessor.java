@@ -156,7 +156,7 @@ public class XMLAccessor extends Accessor
             } else if (slideItem instanceof BitmapItem)
             {
                 out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
-                out.print(((BitmapItem) slideItem).getImageName());
+                out.print(((BitmapItem) slideItem).getText());
             } else
             {
                 System.out.println("Ignoring " + slideItem);
