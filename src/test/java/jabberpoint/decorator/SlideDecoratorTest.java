@@ -1,13 +1,15 @@
 package jabberpoint.decorator;
 
-import jabberpoint.slide.Slide;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import java.awt.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import jabberpoint.slide.Slide;
 
 public class SlideDecoratorTest
 {
@@ -23,7 +25,7 @@ public class SlideDecoratorTest
 
     // Test for FontSizeDecorator
     @Test
-    public void testFontSizeDecorator()
+    public void testFontSizeDecorator_CreatesFontSizeDecoratorWithCorrectFontSize()
     {
         Slide slide = new MockSlide();
         FontSizeDecorator fontSizeDecorator = new FontSizeDecorator(slide, FontSizeDecorator.MEDIUM);
@@ -34,7 +36,7 @@ public class SlideDecoratorTest
 
     // Test for BorderDecorator
     @Test
-    public void testBorderDecorator()
+    public void testBorderDecorator_CreatesBorderDecoratorWithCorrectColor()
     {
         Slide slide = new MockSlide();
         BorderDecorator borderDecorator = new BorderDecorator(slide, BorderDecorator.BLACK);
@@ -45,7 +47,7 @@ public class SlideDecoratorTest
 
     // Test for FontColorDecorator
     @Test
-    public void testFontColorDecorator()
+    public void testFontColorDecorator_CreatesFontColorDecoratorWithCorrectColor()
     {
         Slide slide = new MockSlide();
         FontColorDecorator fontColorDecorator = new FontColorDecorator(slide, FontColorDecorator.RED);
@@ -56,7 +58,7 @@ public class SlideDecoratorTest
 
     // Test for BackgroundColorDecorator
     @Test
-    public void testBackgroundColorDecorator()
+    public void testBackgroundColorDecorator_CreatesBackgroundColorDecoratorWithCorrectColor()
     {
         Slide slide = new MockSlide();
         BackgroundColorDecorator backgroundColorDecorator = new BackgroundColorDecorator(slide,

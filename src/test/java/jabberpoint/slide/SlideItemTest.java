@@ -1,6 +1,5 @@
-package jabberpoint.slideItemFactory;
+package jabberpoint.slide;
 
-import jabberpoint.slide.Slide;
 import jabberpoint.slide.slideItemFactory.BitmapItemCreator;
 import jabberpoint.slide.slideItemFactory.SlideItemCreator;
 import jabberpoint.slide.slideItemFactory.TextItemCreator;
@@ -17,7 +16,7 @@ class SlideItemTest
 
     // TextItem tests
     @Test
-    void createTextItem_textItemCreates3Items_assertEqualsTrue()
+    void createTextItem_CreatesThreeTextItems()
     {
         slide.addSlideItem(textItemCreator.createSlideItem(1, "Im a text item"));
         slide.addSlideItem(textItemCreator.createSlideItem(2, "Im the second text item"));
@@ -28,7 +27,7 @@ class SlideItemTest
 
     // BitmapItem tests
     @Test
-    void createBitmapItem_bitmapItemCreates3Items_assertEqualsTrue()
+    void createBitmapItem_CreatesThreeBitmapItems()
     {
         slide.addSlideItem(bitmapItemCreator.createSlideItem(1, "logo-woordmerk_ou.gif"));
         slide.addSlideItem(bitmapItemCreator.createSlideItem(2, "serclogo_fc.jpg"));
@@ -38,7 +37,7 @@ class SlideItemTest
     }
 
     @Test
-    void throwErrorIfImageDoesNotExist_createBitmapItemWithRandomString_throwsException()
+    void throwErrorIfImageDoesNotExist_CreateBitmapItemWithInvalidImage_ThrowsException()
     {
         assertThrows(RuntimeException.class, () -> slide.addBitmapItem(2, "random.img"));
     }

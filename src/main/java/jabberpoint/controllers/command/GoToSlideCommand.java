@@ -27,15 +27,13 @@ public class GoToSlideCommand extends Command
             pageNumber = Integer.parseInt(pageNumberStr);
         } catch (NumberFormatException e)
         {
-            JOptionPane.showMessageDialog(
-                    parent, "A number must be provided");
+            JOptionPane.showMessageDialog(parent, "A number must be provided");
             return;
         }
 
         if (pageNumber > this.presentation.getSize() || pageNumber <= 0)
         {
-            JOptionPane.showMessageDialog(
-                    parent, "Provide a valid page number");
+            JOptionPane.showMessageDialog(parent, "Provide a valid page number");
             return;
         }
 

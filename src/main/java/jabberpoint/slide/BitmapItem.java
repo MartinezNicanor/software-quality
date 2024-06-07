@@ -38,6 +38,10 @@ public class BitmapItem implements SlideItem
         return this.bufferedImage;
     }
 
+    public void setBufferedImage(BufferedImage bufferedImage) {
+        this.bufferedImage = bufferedImage;
+    }
+
     public int getLevel()
     {
         return this.level;

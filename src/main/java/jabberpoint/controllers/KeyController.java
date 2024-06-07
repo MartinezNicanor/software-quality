@@ -20,13 +20,10 @@ import java.util.Map;
 
 public class KeyController extends KeyAdapter
 {
-    private Presentation presentation; // Commands are given to the presentation
-
     private final Map<Integer, Command> commandMap;
 
     public KeyController(Presentation presentation)
     {
-        this.presentation = presentation;
         this.commandMap = new HashMap<>();
         commandMap.put(KeyEvent.VK_PAGE_DOWN, new NextSlideCommand(presentation));
         commandMap.put(KeyEvent.VK_DOWN, new NextSlideCommand(presentation));
@@ -40,6 +37,7 @@ public class KeyController extends KeyAdapter
     }
 
     // Method to handle key presses
+    @Override
     public void keyPressed(KeyEvent keyEvent)
     {
         Command command = commandMap.get(keyEvent.getKeyCode());

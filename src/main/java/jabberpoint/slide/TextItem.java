@@ -29,6 +29,11 @@ public class TextItem implements SlideItem
         this.text = string;
     }
 
+    // Empty constructor
+    public TextItem()
+    {
+    }
+
     // Get text
     public String getText()
     {

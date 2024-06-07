@@ -1,12 +1,13 @@
 package jabberpoint.decorator;
 
-import jabberpoint.slide.Slide;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
-
-import static org.junit.Assert.assertTrue;
+import jabberpoint.slide.Slide;
+import org.junit.jupiter.api.Test;
 
 public class BackgroundColorDecoratorTest
 {
@@ -29,7 +30,7 @@ public class BackgroundColorDecoratorTest
     }
 
     @Test
-    public void testDrawWithBackgroundColor()
+    public void testDrawWithBackgroundColor_CallsDrawOnSlide()
     {
         // Create mock slide
         MockSlide mockSlide = new MockSlide();

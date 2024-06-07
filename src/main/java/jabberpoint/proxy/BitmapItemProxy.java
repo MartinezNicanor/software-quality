@@ -11,7 +11,7 @@ public class BitmapItemProxy implements SlideItem
 {
     private String imageName; // The name of the image file
     private int level;
-    private BitmapItem realBitmapItem; // The real BitmapItem object
+    protected BitmapItem realBitmapItem; // The real BitmapItem object
 
     // Constructor
     public BitmapItemProxy(int level, String name)
