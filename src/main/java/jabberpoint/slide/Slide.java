@@ -20,15 +20,19 @@ public class Slide
 {
     public final static int WIDTH = 1200;
     public final static int HEIGHT = 800;
-    protected String title;
+    private String title;
     protected Vector<SlideItem> slideItems;
-    public SlideItemCreator textItemCreator = new TextItemCreator();
+    private SlideItemCreator textItemCreator = new TextItemCreator();
     private final SlideItemCreator bitmapItemCreator = new BitmapItemCreator();
 
 
     public Slide()
     {
         slideItems = new Vector<SlideItem>();
+    }
+
+    public void setTextItemCreator(SlideItemCreator textItemCreator) {
+        this.textItemCreator = textItemCreator;
     }
 
     public String getTitle()

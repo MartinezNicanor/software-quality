@@ -6,8 +6,8 @@ import java.io.IOException;
 
 public abstract class Accessor
 {
-    public static final String DEMO_NAME = "Demonstration presentation"; // Default name for demo presentation
-    public static final String DEFAULT_EXTENSION = ".xml"; // Default file extension
+    private static final String DEMO_NAME = "Demonstration presentation"; // Default name for demo presentation
+    private static final String DEFAULT_EXTENSION = ".xml"; // Default file extension
 
     // Returns instance of DemoPresentation
     public static Accessor getDemoAccessor()

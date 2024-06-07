@@ -22,7 +22,7 @@ public class BitmapItemTest {
     @Before
     public void setUp() {
         bitmapItem = new BitmapItem(1, "jabberpoint.gif");
-        bitmapItem.bufferedImage = null;
+        bitmapItem.setBufferedImage(null);
         graphicsMock = mock(Graphics.class);
         imageObserverMock = mock(ImageObserver.class);
         styleMock = mock(Style.class);
@@ -54,7 +54,7 @@ public class BitmapItemTest {
     @Test
     public void testGetBoundingBox_WithImage() {
         BufferedImage bufferedImageMock = mock(BufferedImage.class);
-        bitmapItem.bufferedImage = bufferedImageMock;
+        bitmapItem.setBufferedImage(bufferedImageMock);
 
         when(bufferedImageMock.getWidth(imageObserverMock)).thenReturn(100);
         when(bufferedImageMock.getHeight(imageObserverMock)).thenReturn(100);
@@ -68,7 +68,7 @@ public class BitmapItemTest {
     @Test
     public void testDraw_WithImage() {
         BufferedImage bufferedImageMock = mock(BufferedImage.class);
-        bitmapItem.bufferedImage = bufferedImageMock;
+        bitmapItem.setBufferedImage(bufferedImageMock);
 
         bitmapItem.draw(0, 0, 1.0f, graphicsMock, styleMock, imageObserverMock);
 
@@ -80,7 +80,7 @@ public class BitmapItemTest {
     @Test
     public void testDraw_WithNullStyle() {
         BufferedImage bufferedImageMock = mock(BufferedImage.class);
-        bitmapItem.bufferedImage = bufferedImageMock;
+        bitmapItem.setBufferedImage(bufferedImageMock);
 
         bitmapItem.draw(0, 0, 1.0f, graphicsMock, null, imageObserverMock);
 

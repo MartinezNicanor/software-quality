@@ -10,8 +10,8 @@ import java.awt.image.ImageObserver;
 
 public class BitmapItemProxy implements SlideItem
 {
-    private String imageName; // The name of the image file
-    private int level;
+    private final String imageName; // The name of the image file
+    private final int level;
     protected BitmapItem realBitmapItem; // The real BitmapItem object
 
     // Constructor

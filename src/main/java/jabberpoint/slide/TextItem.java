@@ -35,15 +35,24 @@ public class TextItem implements SlideItem
         this.text = string;
     }
 
-    // give the text
+    // Getters and setters
+
     public String getText()
     {
         return this.text;
     }
 
+    public void setText(String text) {
+        this.text = text;
+    }
+
     public int getLevel()
     {
         return this.level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public AttributedString getAttributedString(Style style, float scale) {
@@ -62,7 +71,7 @@ public class TextItem implements SlideItem
     {
         List<TextLayout> layouts = getLayouts(g, myStyle, scale);
         int xsize = 0;
-        int ysize = (int) (myStyle.leading * scale);
+        int ysize = (int) (myStyle.getLeading() * scale);
         Iterator<TextLayout> iterator = layouts.iterator();
         while (iterator.hasNext())
         {
@@ -78,7 +87,7 @@ public class TextItem implements SlideItem
             }
             ysize += layout.getLeading() + layout.getDescent();
         }
-        return new Rectangle((int) (myStyle.indent * scale), 0, xsize, ysize);
+        return new Rectangle((int) (myStyle.getIndent() * scale), 0, xsize, ysize);
     }
 
     @Override
@@ -90,9 +99,9 @@ public class TextItem implements SlideItem
             return;
         }
         List<TextLayout> layouts = getLayouts(g, myStyle, scale);
-        Point pen = new Point(x + (int) (myStyle.indent * scale), y + (int) (myStyle.leading * scale));
+        Point pen = new Point(x + (int) (myStyle.getIndent() * scale), y + (int) (myStyle.getLeading() * scale));
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(myStyle.color);
+        g2d.setColor(myStyle.getColor());
 
         Iterator<TextLayout> it = layouts.iterator();
         while (it.hasNext())
@@ -112,7 +121,7 @@ public class TextItem implements SlideItem
             Graphics2D g2d = (Graphics2D) g;
             FontRenderContext frc = g2d.getFontRenderContext();
             LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
-            float wrappingWidth = (Slide.WIDTH - s.indent) * scale;
+            float wrappingWidth = (Slide.WIDTH - s.getIndent()) * scale;
             while (measurer.getPosition() < text.length()) {
                 TextLayout layout = measurer.nextLayout(wrappingWidth);
                 layouts.add(layout);

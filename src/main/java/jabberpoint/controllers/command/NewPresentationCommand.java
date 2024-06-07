@@ -8,7 +8,7 @@ import java.awt.*;
 public class NewPresentationCommand extends Command
 {
     // Reference to frame associated with presentation
-    private Frame frame;
+    private final Frame frame;
 
     // Constructor
     public NewPresentationCommand(Presentation presentation, Frame frame)

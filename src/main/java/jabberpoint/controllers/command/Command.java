@@ -6,7 +6,7 @@ import jabberpoint.Presentation;
 public abstract class Command
 {
     // Reference to presentation instance
-    public Presentation presentation;
+    protected Presentation presentation;
 
     // Constructor
     public Command(Presentation presentation)

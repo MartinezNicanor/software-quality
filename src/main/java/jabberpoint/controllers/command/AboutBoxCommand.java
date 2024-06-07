@@ -9,7 +9,7 @@ import java.awt.*;
 public class AboutBoxCommand extends Command
 {
     // Reference to frame where About Box will be displayed
-    private Frame frame;
+    private final Frame frame;
 
     // Constructor
     public AboutBoxCommand(Presentation presentation, Frame frame)

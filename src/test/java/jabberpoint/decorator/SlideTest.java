@@ -4,7 +4,6 @@ import jabberpoint.slide.Slide;
 import jabberpoint.slide.SlideItem;
 import jabberpoint.slide.Style;
 import jabberpoint.slide.TextItem;
-import jabberpoint.slide.slideItemFactory.SlideItemCreator;
 import jabberpoint.slide.slideItemFactory.TextItemCreator;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +42,7 @@ public class SlideTest {
 
         Mockito.when(textItemCreatorMock.createSlideItem(1, "Text")).thenReturn(textItemMock);
 
-        slide.textItemCreator = textItemCreatorMock;
+        slide.setTextItemCreator(textItemCreatorMock);
         slide.addTextItem(1, "Text");
 
         Vector<SlideItem> slideItems = slide.getSlideItems();

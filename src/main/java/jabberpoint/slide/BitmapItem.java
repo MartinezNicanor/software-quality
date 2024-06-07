@@ -8,9 +8,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class BitmapItem implements SlideItem {
-    public BufferedImage bufferedImage;
-    private String imageName;
-    private int level;
+    private BufferedImage bufferedImage;
+    private final String imageName;
+    private final int level;
 
     public BitmapItem(int level, String imageName) {
         this.level = level;
@@ -30,8 +30,8 @@ public class BitmapItem implements SlideItem {
         return this.imageName;
     }
 
-    public BufferedImage getBufferedImage() {
-        return this.bufferedImage;
+    public void setBufferedImage(BufferedImage bufferedImage) {
+        this.bufferedImage = bufferedImage;
     }
 
     public int getLevel() {
@@ -41,11 +41,11 @@ public class BitmapItem implements SlideItem {
     @Override
     public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
         if (bufferedImage == null) {
-            return new Rectangle((int) (myStyle.indent * scale), 0, 0, 0);
+            return new Rectangle((int) (myStyle.getIndent() * scale), 0, 0, 0);
         }
-        return new Rectangle((int) (myStyle.indent * scale), 0,
+        return new Rectangle((int) (myStyle.getIndent() * scale), 0,
                 (int) (bufferedImage.getWidth(observer) * scale),
-                ((int) (myStyle.leading * scale)) +
+                ((int) (myStyle.getLeading() * scale)) +
                         (int) (bufferedImage.getHeight(observer) * scale));
     }
 
@@ -56,8 +56,8 @@ public class BitmapItem implements SlideItem {
             return;
         }
 
-        int width = x + (int) (style.indent * scale);
-        int height = y + (int) (style.leading * scale);
+        int width = x + (int) (style.getIndent() * scale);
+        int height = y + (int) (style.getLeading() * scale);
         g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
                 (int) (bufferedImage.getHeight(observer) * scale), observer);
     }

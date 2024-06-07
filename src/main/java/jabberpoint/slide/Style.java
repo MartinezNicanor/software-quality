@@ -8,59 +8,24 @@ public class Style {
 
     private static final String FONT_NAME = "Helvetica";
 
-    public int indent;
-    public Color color;
-    public Font font;
-    public int fontSize;
-    public int leading;
+    private final int indent;
+    private final Color color;
+    private final Font font;
+    private final int fontSize;
+    private final int leading;
 
     // Getters and setters
-    public static Style[] getStyles() {
-        return styles;
-    }
-
-    public static void setStyles(Style[] styles) {
-        Style.styles = styles;
-    }
 
     public int getIndent() {
         return indent;
-    }
-
-    public void setIndent(int indent) {
-        this.indent = indent;
     }
 
     public Color getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public Font getFont() {
-        return font;
-    }
-
-    public void setFont(Font font) {
-        this.font = font;
-    }
-
-    public int getFontSize() {
-        return fontSize;
-    }
-
-    public void setFontSize(int fontSize) {
-        this.fontSize = fontSize;
-    }
-
     public int getLeading() {
         return leading;
-    }
-
-    public void setLeading(int leading) {
-        this.leading = leading;
     }
 
     // Method to create fixed styles

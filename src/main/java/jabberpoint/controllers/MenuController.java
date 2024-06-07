@@ -20,12 +20,12 @@ import java.awt.event.ActionEvent;
 public class MenuController extends MenuBar
 {
 
-    private Frame frame;
-    private Presentation presentation;
+    private final Frame frame;
+    private final Presentation presentation;
     private MenuItem menuItem;
-    private Menu fileMenu = new Menu("File");
-    private Menu viewMenu = new Menu("View");
-    private Menu helpMenu = new Menu("Help");
+    private final Menu fileMenu = new Menu("File");
+    private final Menu viewMenu = new Menu("View");
+    private final Menu helpMenu = new Menu("Help");
 
     // Constructor
     public MenuController(Frame frame, Presentation presentation)
