@@ -10,7 +10,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Jabberpoint" target="1.8" />
       <module name="software-quality" target="1.8" />
     </bytecodeTargetLevel>
   </component>

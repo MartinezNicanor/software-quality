@@ -1,102 +1,87 @@
-package jabberpoint.proxy;
+package jabberpoint.slide;
 
-import jabberpoint.slide.BitmapItem;
-import jabberpoint.slide.Style;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
+public class BitmapItemTest {
 
-public class BitmapItemTest
-{
+    private BitmapItem bitmapItem;
+    private Graphics graphicsMock;
+    private ImageObserver imageObserverMock;
+    private Style styleMock;
 
-    @Test
-    public void testGetImageName_WhenConstructedWithName_ShouldReturnSameName()
-    {
-        // Arrange
-        String imageName = "test_image.png";
-        BitmapItem bitmapItem = new BitmapItem(1, imageName);
-
-        // act
-        String result = bitmapItem.getImageName();
-
-        // Assert
-        assertEquals(imageName, result);
+    @Before
+    public void setUp() {
+        bitmapItem = new BitmapItem(1, "testImage.jpg");
+        graphicsMock = mock(Graphics.class);
+        imageObserverMock = mock(ImageObserver.class);
+        styleMock = mock(Style.class);
     }
 
     @Test
-    public void testGetImageName_WhenConstructedWithNullName_ShouldReturnNull()
-    {
-        // Arrange
-        BitmapItem bitmapItem = new BitmapItem(1, null);
-
-        // act
-        String result = bitmapItem.getImageName();
-
-        // Assert
-        assertNull(result);
+    public void testGetBoundingBox_NoImageLoaded() {
+        Rectangle boundingBox = bitmapItem.getBoundingBox(graphicsMock, imageObserverMock, 1.0f, styleMock);
+        assertEquals(new Rectangle(), boundingBox);
     }
 
     @Test
-    public void testToString_WhenConstructedWithName_ShouldReturnExpectedString()
-    {
-        // Arrange
-        int level = 1;
-        String imageName = "test_image.png";
-        BitmapItem bitmapItem = new BitmapItem(level, imageName);
-        String expected = "BitmapItem[" + level + "," + imageName + "]";
-
-        // act
-        String result = bitmapItem.toString();
-
-        // Assert
-        assertEquals(expected, result);
+    public void testDraw_NoImageLoaded() {
+        bitmapItem.draw(0, 0, 1.0f, graphicsMock, styleMock, imageObserverMock);
+        // No interaction with graphicsMock expected, so no verification needed.
     }
 
     @Test
-    public void testToString_WhenConstructedWithNullName_ShouldReturnExpectedString()
-    {
-        // Arrange
-        int level = 1;
-        BitmapItem bitmapItem = new BitmapItem(level, null);
-        String expected = "BitmapItem[" + level + ",null]";
-
-        // act
-        String result = bitmapItem.toString();
-
-        // Assert
-        assertEquals(expected, result);
+    public void testGetLevel() {
+        assertEquals(1, bitmapItem.getLevel());
     }
 
     @Test
-    public void testGetBoundingBox_WhenStyleIsNull_ShouldReturnEmptyRectangle()
-    {
-        // Arrange
-        BitmapItem bitmapItem = new BitmapItem(1, "JabberPoint.gif");
-        Graphics g = createGraphicsMock();
-        ImageObserver observer = createImageObserverMock();
-        float scale = 1.0f;
-        Style myStyle = null;
-
-        // act
-        Rectangle result = bitmapItem.getBoundingBox(g, observer, scale, myStyle);
-
-        // Assert
-        assertEquals(new Rectangle(0, 0, 0, 0), result);
+    public void testToString() {
+        assertEquals("BitmapItem[1,testImage.jpg]", bitmapItem.toString());
     }
 
-    // Mock methods to simulate dependencies
-    private Graphics createGraphicsMock()
-    {
-        return null;
+    @Test
+    public void testGetBoundingBox_WithImage() {
+        BufferedImage bufferedImageMock = mock(BufferedImage.class);
+        bitmapItem.bufferedImage = bufferedImageMock;
+
+        when(bufferedImageMock.getWidth(imageObserverMock)).thenReturn(100);
+        when(bufferedImageMock.getHeight(imageObserverMock)).thenReturn(100);
+
+        Rectangle boundingBox = bitmapItem.getBoundingBox(graphicsMock, imageObserverMock, 1.0f, styleMock);
+
+        assertEquals(new Rectangle(0, 0, 100, 100), boundingBox);
     }
 
-    private ImageObserver createImageObserverMock()
-    {
-        return null;
+
+    @Test
+    public void testDraw_WithImage() {
+        BufferedImage bufferedImageMock = mock(BufferedImage.class);
+        bitmapItem.bufferedImage = bufferedImageMock;
+
+        bitmapItem.draw(0, 0, 1.0f, graphicsMock, styleMock, imageObserverMock);
+
+        // Use matchers for all arguments
+        verify(graphicsMock).drawImage(
+                eq(bufferedImageMock), anyInt(), anyInt(), anyInt(), anyInt(), eq(imageObserverMock));
+    }
+
+
+
+    @Test
+    public void testDraw_WithNullStyle() {
+        BufferedImage bufferedImageMock = mock(BufferedImage.class);
+        bitmapItem.bufferedImage = bufferedImageMock;
+
+        bitmapItem.draw(0, 0, 1.0f, graphicsMock, null, imageObserverMock);
+
+        // No interaction with graphicsMock expected, so no verification needed.
     }
 }

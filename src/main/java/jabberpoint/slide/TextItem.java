@@ -46,12 +46,15 @@ public class TextItem implements SlideItem
         return this.level;
     }
 
-    public AttributedString getAttributedString(Style style, float scale)
-    {
+    public AttributedString getAttributedString(Style style, float scale) {
+        if (text == null) {
+            return new AttributedString(""); // Return an empty AttributedString if text is null
+        }
         AttributedString attrStr = new AttributedString(getText());
         attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, text.length());
         return attrStr;
     }
+
 
     @Override
     // give the bounding box of the item
@@ -101,21 +104,23 @@ public class TextItem implements SlideItem
         }
     }
 
-    private List<TextLayout> getLayouts(Graphics g, Style s, float scale)
-    {
+    private List<TextLayout> getLayouts(Graphics g, Style s, float scale) {
         List<TextLayout> layouts = new ArrayList<TextLayout>();
-        AttributedString attrStr = getAttributedString(s, scale);
-        Graphics2D g2d = (Graphics2D) g;
-        FontRenderContext frc = g2d.getFontRenderContext();
-        LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
-        float wrappingWidth = (Slide.WIDTH - s.indent) * scale;
-        while (measurer.getPosition() < getText().length())
-        {
-            TextLayout layout = measurer.nextLayout(wrappingWidth);
-            layouts.add(layout);
+        String text = getText(); // Get the text
+        if (text != null && !text.isEmpty()) { // Check if the text is not null and not empty
+            AttributedString attrStr = getAttributedString(s, scale);
+            Graphics2D g2d = (Graphics2D) g;
+            FontRenderContext frc = g2d.getFontRenderContext();
+            LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
+            float wrappingWidth = (Slide.WIDTH - s.indent) * scale;
+            while (measurer.getPosition() < text.length()) {
+                TextLayout layout = measurer.nextLayout(wrappingWidth);
+                layouts.add(layout);
+            }
         }
         return layouts;
     }
+
 
     public String toString()
     {

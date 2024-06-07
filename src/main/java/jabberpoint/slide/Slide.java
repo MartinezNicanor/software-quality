@@ -22,7 +22,7 @@ public class Slide
     public final static int HEIGHT = 800;
     protected String title;
     protected Vector<SlideItem> slideItems;
-    private final SlideItemCreator textItemCreator = new TextItemCreator();
+    public SlideItemCreator textItemCreator = new TextItemCreator();
     private final SlideItemCreator bitmapItemCreator = new BitmapItemCreator();
 
 

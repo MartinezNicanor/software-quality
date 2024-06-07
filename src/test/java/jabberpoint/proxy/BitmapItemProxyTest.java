@@ -2,89 +2,86 @@ package jabberpoint.proxy;
 
 import jabberpoint.slide.BitmapItem;
 import jabberpoint.slide.Style;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.*;
 import java.awt.image.ImageObserver;
-import java.lang.reflect.Field;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
-public class BitmapItemProxyTest
-{
+public class BitmapItemProxyTest {
 
+    private BitmapItemProxy bitmapItemProxy;
+    private BitmapItem realBitmapItemMock;
+    private Graphics graphicsMock;
+    private ImageObserver imageObserverMock;
+    private Style styleMock;
 
-    @Test
-    public void testToString_WhenRealBitmapItemIsNotNull_ShouldDelegateToRealBitmapItem()
-    {
-        // Arrange
-        BitmapItemProxy proxy = new BitmapItemProxy(1, "test_image.png");
-        BitmapItem realBitmapItem = new BitmapItem(1, "test_image.png");
-        setPrivateField(proxy, "realBitmapItem", realBitmapItem); // Set the realBitmapItem using reflection
-
-        // Act
-        String result = proxy.toString();
-
-        // Assert
-        assertTrue(result.contains(realBitmapItem.toString()));
+    @Before
+    public void setUp() {
+        bitmapItemProxy = new BitmapItemProxy(1, "testImage.jpg");
+        realBitmapItemMock = mock(BitmapItem.class);
+        graphicsMock = mock(Graphics.class);
+        imageObserverMock = mock(ImageObserver.class);
+        styleMock = mock(Style.class);
     }
 
     @Test
-    public void testLoadImage_WhenImageIsLoadedSuccessfully_ShouldSetRealBitmapItem()
-    {
-        // Arrange
-        BitmapItemProxy proxy = new BitmapItemProxy(1, "test_image.png");
-
-        // Act
-        proxy.loadImage();
-
-        // Assert
-        BitmapItem realBitmapItem = getPrivateField(proxy, "realBitmapItem");
-        assertTrue(realBitmapItem != null); // Assert that realBitmapItem is not null after loading the image
+    public void testGetBoundingBox_Placeholder() {
+        Rectangle placeholder = bitmapItemProxy.getBoundingBox(graphicsMock, imageObserverMock, 1.0f, styleMock);
+        assertEquals(new Rectangle(0, 0, 100, 100), placeholder);
     }
 
-    // mock methods to simulate dependencies
-    private Graphics createGraphicsMock()
-    {
-        return null;
+    @Test
+    public void testGetBoundingBox_RealItem() {
+        bitmapItemProxy.loadImage();
+        bitmapItemProxy.realBitmapItem = realBitmapItemMock;
+        Rectangle expectedRect = new Rectangle(0, 0, 200, 200);
+        when(realBitmapItemMock.getBoundingBox(graphicsMock, imageObserverMock, 1.0f, styleMock)).thenReturn(expectedRect);
+
+        Rectangle actualRect = bitmapItemProxy.getBoundingBox(graphicsMock, imageObserverMock, 1.0f, styleMock);
+        assertEquals(expectedRect, actualRect);
     }
 
-    private ImageObserver createImageObserverMock()
-    {
-        return null;
+    @Test
+    public void testDraw_Placeholder() {
+        bitmapItemProxy.draw(0, 0, 1.0f, graphicsMock, styleMock, imageObserverMock);
+        verify(graphicsMock).drawRect(0, 0, 100, 100);
     }
 
-    private Style createStyleMock()
-    {
-        return null;
+    @Test
+    public void testDraw_RealItem() {
+        bitmapItemProxy.loadImage();
+        bitmapItemProxy.realBitmapItem = realBitmapItemMock;
+
+        bitmapItemProxy.draw(0, 0, 1.0f, graphicsMock, styleMock, imageObserverMock);
+        verify(realBitmapItemMock).draw(0, 0, 1.0f, graphicsMock, styleMock, imageObserverMock);
     }
 
-    // method to set private fields
-    private void setPrivateField(Object object, String fieldName, Object value)
-    {
-        try
-        {
-            Field field = object.getClass().getDeclaredField(fieldName);
-            field.setAccessible(true);
-            field.set(object, value);
-        } catch (NoSuchFieldException | IllegalAccessException e)
-        {
-            e.printStackTrace();
-        }
+    @Test
+    public void testGetLevel() {
+        assertEquals(1, bitmapItemProxy.getLevel());
     }
 
-    // method to get private fields
-    private <T> T getPrivateField(Object object, String fieldName)
-    {
-        try
-        {
-            Field field = object.getClass().getDeclaredField(fieldName);
-            field.setAccessible(true);
-            return (T) field.get(object);
-        } catch (NoSuchFieldException | IllegalAccessException e)
-        {
-            e.printStackTrace();
-            return null;
-        }
+    @Test
+    public void testToString_Placeholder() {
+        assertEquals("BitmapItemProxy[1,testImage.jpg]", bitmapItemProxy.toString());
+    }
+
+    @Test
+    public void testToString_RealItem() {
+        bitmapItemProxy.loadImage();
+        bitmapItemProxy.realBitmapItem = realBitmapItemMock;
+        when(realBitmapItemMock.toString()).thenReturn("BitmapItem[1,testImage.jpg]");
+
+        assertEquals("BitmapItem[1,testImage.jpg]", bitmapItemProxy.toString());
+    }
+
+    @Test
+    public void testLoadImage() {
+        bitmapItemProxy.loadImage();
+        assertNotNull(bitmapItemProxy.realBitmapItem);
     }
 }

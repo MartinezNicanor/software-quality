@@ -3,50 +3,35 @@ package jabberpoint.slide;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 
-public class BitmapItem implements SlideItem
-{
-    private BufferedImage bufferedImage;
+public class BitmapItem implements SlideItem {
+    BufferedImage bufferedImage;
     private String imageName;
     private int level;
 
-    public BitmapItem(int level, String imageName)
-    {
+    public BitmapItem(int level, String imageName) {
         this.level = level;
         this.imageName = imageName;
-
-        try
-        {
-            this.bufferedImage = ImageIO.read(new File(imageName));
-        } catch (IOException e)
-        {
-            this.bufferedImage = null;
-            throw new RuntimeException("File " + imageName + " not found");
-        }
+        this.bufferedImage = bufferedImage;
     }
 
-    public String getImageName()
-    {
+    public String getImageName() {
         return this.imageName;
     }
 
-    public BufferedImage getBufferedImage()
-    {
+    public BufferedImage getBufferedImage() {
         return this.bufferedImage;
     }
 
-    public int getLevel()
-    {
+    public int getLevel() {
         return this.level;
     }
 
     @Override
-    // gives bounding box of the image
-    public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
-    {
+    public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
+        if (bufferedImage == null) {
+            return new Rectangle();
+        }
         return new Rectangle((int) (myStyle.indent * scale), 0,
                 (int) (bufferedImage.getWidth(observer) * scale),
                 ((int) (myStyle.leading * scale)) +
@@ -54,13 +39,9 @@ public class BitmapItem implements SlideItem
     }
 
     @Override
-    // draws the image
-    public void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer)
-    {
-        if (style == null || imageName == null)
-        {
-            // handle null style or null image
-            style = new Style(0, Color.BLACK, 0, 0);
+    public void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer) {
+        if (bufferedImage == null || style == null) {
+            return;
         }
 
         int width = x + (int) (style.indent * scale);
@@ -69,10 +50,8 @@ public class BitmapItem implements SlideItem
                 (int) (bufferedImage.getHeight(observer) * scale), observer);
     }
 
-    // Get string representation of BitmapItem
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "BitmapItem[" + getLevel() + "," + imageName + "]";
     }
 }

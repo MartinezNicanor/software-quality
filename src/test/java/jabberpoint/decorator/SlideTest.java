@@ -1,70 +1,103 @@
 package jabberpoint.decorator;
 
-import static org.junit.Assert.assertEquals;
-
-import java.awt.Rectangle;
-import java.util.Vector;
-
 import jabberpoint.slide.Slide;
 import jabberpoint.slide.SlideItem;
+import jabberpoint.slide.Style;
 import jabberpoint.slide.TextItem;
-import jabberpoint.slide.slideItemFactory.BitmapItemCreator;
 import jabberpoint.slide.slideItemFactory.SlideItemCreator;
 import jabberpoint.slide.slideItemFactory.TextItemCreator;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
-public class SlideTest
-{
+import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.util.Vector;
 
-    private SlideItemCreator textItemCreator = new TextItemCreator();
-    private SlideItemCreator bitmapItemCreator = new BitmapItemCreator();
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 
-    // Test method to verify scale calculation when width is larger
+public class SlideTest {
+
+    private Slide slide;
+    private Graphics graphicsMock;
+    private ImageObserver imageObserverMock;
+
+    @Before
+    public void setUp() {
+        slide = new Slide();
+        graphicsMock = mock(Graphics.class);
+        imageObserverMock = mock(ImageObserver.class);
+
+        // No need for Style.initializeStyles() here since it's handled in the Style class itself
+    }
+
     @Test
-    public void testGetScale_WidthLarger()
-    {
-        Slide slide = new Slide();
-        Rectangle area = new Rectangle(800, 600); // Larger area
-        float scale = slide.getScale(area);
-        // Adjust the expected value based on the actual calculated scale
-        assertEquals(2.0f / 3.0f, scale, 0.01); // Expected scale: 2/3
+    public void testSetTitle() {
+        slide.setTitle("Test Title");
+        assertEquals("Test Title", slide.getTitle());
+    }
+
+    @Test
+    public void testAddSlideItem() {
+        TextItemCreator textItemCreatorMock = Mockito.mock(TextItemCreator.class);
+        TextItem textItemMock = Mockito.mock(TextItem.class); // Mock a TextItem
+
+        Mockito.when(textItemCreatorMock.createSlideItem(1, "Text")).thenReturn(textItemMock);
+
+        slide.textItemCreator = textItemCreatorMock;
+        slide.addTextItem(1, "Text");
+
+        Vector<SlideItem> slideItems = slide.getSlideItems();
+        assertEquals(1, slideItems.size());
+        assertEquals(textItemMock, slideItems.elementAt(0));
     }
 
 
-    // Test method to verify scale calculation when height is larger
     @Test
-    public void testGetScale_HeightLarger()
-    {
-        Slide slide = new Slide();
-        Rectangle area = new Rectangle(600, 800); // Larger area
-        float scale = slide.getScale(area);
-        assertEquals(0.5f, scale, 0.01); // Expected scale
+    public void testGetSlideItem() {
+        SlideItem slideItem = Mockito.mock(SlideItem.class);
+        slide.addSlideItem(slideItem);
+        assertEquals(slideItem, slide.getSlideItem(0));
     }
 
-    // Test method to verify scale calculation when width and height have the same ratio
     @Test
-    public void testGetScale_SameRatio()
-    {
-        Slide slide = new Slide();
-        Rectangle area = new Rectangle(1200, 800); // Same ratio
-        float scale = slide.getScale(area);
-        assertEquals(1.0f, scale, 0.01); // Expected scale
+    public void testGetAmountOfSlideItems() {
+        assertEquals(0, slide.getAmountOfSlideItems());
+        slide.addTextItem(1, "Text");
+        assertEquals(1, slide.getAmountOfSlideItems());
     }
 
-    // Test method to verify getting slide items
     @Test
-    public void testGetSlideItem()
-    {
-        Slide slide = new Slide();
-        SlideItem item1 = new TextItem(0, "Item 1");
-        SlideItem item2 = new TextItem(1, "Item 2");
-        slide.addTextItem(0, "Item 1");
-        slide.addTextItem(1, "Item 2");
+    public void testDraw() {
+        // Mocking slide items for drawing
+        TextItem textItemMock = Mockito.mock(TextItem.class); // Use TextItem.class instead of SlideItem.class
+        SlideItem bitmapItemMock = Mockito.mock(SlideItem.class);
 
-        Vector<SlideItem> items = slide.getSlideItems();
-        assertEquals(2, items.size()); // Check size of items vector
+        // Mocking graphics object for drawing
+        Graphics2D graphicsMock = Mockito.mock(Graphics2D.class);
 
-        assertEquals(item1, slide.getSlideItem(0)); // Check first item
-        assertEquals(item2, slide.getSlideItem(1)); // Check second item
+        Mockito.when(textItemMock.getBoundingBox(Mockito.any(Graphics2D.class), Mockito.any(ImageObserver.class), Mockito.anyFloat(), Mockito.any(Style.class)))
+                .thenReturn(new Rectangle(0, 0, 200, 50));
+        Mockito.when(bitmapItemMock.getBoundingBox(Mockito.any(Graphics2D.class), Mockito.any(ImageObserver.class), Mockito.anyFloat(), Mockito.any(Style.class)))
+                .thenReturn(new Rectangle(0, 0, 100, 100));
+
+        slide.addSlideItem(textItemMock);
+        slide.addSlideItem(bitmapItemMock);
+
+        Rectangle area = new Rectangle(0, 0, 300, 300);
+        slide.draw(graphicsMock, area, imageObserverMock);
+
+        // Verify that draw methods of slide items are called
+        Mockito.verify(textItemMock).draw(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyFloat(), Mockito.eq(graphicsMock), Mockito.any(Style.class), Mockito.eq(imageObserverMock));
+        Mockito.verify(bitmapItemMock).draw(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyFloat(), Mockito.eq(graphicsMock), Mockito.any(Style.class), Mockito.eq(imageObserverMock));
+    }
+
+
+
+    @Test
+    public void testGetScale() {
+        Rectangle area = new Rectangle(0, 0, 600, 400);
+        assertEquals(0.5f, slide.getScale(area), 0.01);
     }
 }
