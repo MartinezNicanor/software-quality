@@ -1,18 +1,29 @@
 package jabberpoint.slide;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
+import java.io.File;
+import java.io.IOException;
 
 public class BitmapItem implements SlideItem {
-    BufferedImage bufferedImage;
+    public BufferedImage bufferedImage;
     private String imageName;
     private int level;
 
     public BitmapItem(int level, String imageName) {
         this.level = level;
         this.imageName = imageName;
-        this.bufferedImage = bufferedImage;
+
+        try
+        {
+            this.bufferedImage = ImageIO.read(new File(imageName));
+        } catch (IOException e)
+        {
+            this.bufferedImage = null;
+            throw new RuntimeException("File " + imageName + " not found");
+        }
     }
 
     public String getImageName() {
@@ -30,13 +41,14 @@ public class BitmapItem implements SlideItem {
     @Override
     public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
         if (bufferedImage == null) {
-            return new Rectangle();
+            return new Rectangle((int) (myStyle.indent * scale), 0, 0, 0);
         }
         return new Rectangle((int) (myStyle.indent * scale), 0,
                 (int) (bufferedImage.getWidth(observer) * scale),
                 ((int) (myStyle.leading * scale)) +
                         (int) (bufferedImage.getHeight(observer) * scale));
     }
+
 
     @Override
     public void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer) {

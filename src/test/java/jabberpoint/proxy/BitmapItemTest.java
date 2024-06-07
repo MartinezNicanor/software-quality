@@ -1,5 +1,7 @@
-package jabberpoint.slide;
+package jabberpoint.proxy;
 
+import jabberpoint.slide.BitmapItem;
+import jabberpoint.slide.Style;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,11 +21,13 @@ public class BitmapItemTest {
 
     @Before
     public void setUp() {
-        bitmapItem = new BitmapItem(1, "testImage.jpg");
+        bitmapItem = new BitmapItem(1, "jabberpoint.gif");
+        bitmapItem.bufferedImage = null;
         graphicsMock = mock(Graphics.class);
         imageObserverMock = mock(ImageObserver.class);
         styleMock = mock(Style.class);
     }
+
 
     @Test
     public void testGetBoundingBox_NoImageLoaded() {
@@ -44,7 +48,7 @@ public class BitmapItemTest {
 
     @Test
     public void testToString() {
-        assertEquals("BitmapItem[1,testImage.jpg]", bitmapItem.toString());
+        assertEquals("BitmapItem[1,jabberpoint.gif]", bitmapItem.toString());
     }
 
     @Test
@@ -68,11 +72,9 @@ public class BitmapItemTest {
 
         bitmapItem.draw(0, 0, 1.0f, graphicsMock, styleMock, imageObserverMock);
 
-        // Use matchers for all arguments
         verify(graphicsMock).drawImage(
                 eq(bufferedImageMock), anyInt(), anyInt(), anyInt(), anyInt(), eq(imageObserverMock));
     }
-
 
 
     @Test
@@ -82,6 +84,5 @@ public class BitmapItemTest {
 
         bitmapItem.draw(0, 0, 1.0f, graphicsMock, null, imageObserverMock);
 
-        // No interaction with graphicsMock expected, so no verification needed.
     }
 }

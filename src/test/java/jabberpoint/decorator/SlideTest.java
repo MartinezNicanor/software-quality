@@ -28,8 +28,6 @@ public class SlideTest {
         slide = new Slide();
         graphicsMock = mock(Graphics.class);
         imageObserverMock = mock(ImageObserver.class);
-
-        // No need for Style.initializeStyles() here since it's handled in the Style class itself
     }
 
     @Test
@@ -88,7 +86,7 @@ public class SlideTest {
         Rectangle area = new Rectangle(0, 0, 300, 300);
         slide.draw(graphicsMock, area, imageObserverMock);
 
-        // Verify that draw methods of slide items are called
+        // Verify draw methods are called
         Mockito.verify(textItemMock).draw(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyFloat(), Mockito.eq(graphicsMock), Mockito.any(Style.class), Mockito.eq(imageObserverMock));
         Mockito.verify(bitmapItemMock).draw(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyFloat(), Mockito.eq(graphicsMock), Mockito.any(Style.class), Mockito.eq(imageObserverMock));
     }
