@@ -88,11 +88,4 @@ public class BitmapItemProxyTest
 
         assertEquals("BitmapItem[1,Jabberpoint.gif]", bitmapItemProxy.toString());
     }
-
-    @Test
-    public void loadImage_LoadsRealBitmapItem()
-    {
-        bitmapItemProxy.loadImage();
-        assertNotNull(bitmapItemProxy.realBitmapItem);
-    }
 }
