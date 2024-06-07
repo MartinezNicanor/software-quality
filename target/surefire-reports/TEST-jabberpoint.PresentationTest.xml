@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="jabberpoint.PresentationTest" time="1.697" tests="16" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="jabberpoint.PresentationTest" time="1.584" tests="16" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2022.3.3"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -47,7 +47,7 @@
     <property name="java.class.path" value="C:\Users\marti\AppData\Local\JetBrains\IntelliJ IDEA 2022.3.3\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;C:\Users\marti\AppData\Local\JetBrains\IntelliJ IDEA 2022.3.3\plugins\maven\lib\maven3\boot\plexus-classworlds.license"/>
     <property name="java.vm.specification.version" value="19"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2022.3.3 package"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2022.3.3 test"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-19"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -66,20 +66,20 @@
     <property name="sun.stdout.encoding" value="UTF-8"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="constructorWithSlideViewerComponent_NonNullSlideViewerComponent_MinusOneSlideNumber_ZeroSize" classname="jabberpoint.PresentationTest" time="1.621"/>
-  <testcase name="defaultConstructor_NullSlideViewerComponent_MinusOneSlideNumber_ZeroSize" classname="jabberpoint.PresentationTest" time="0.002"/>
-  <testcase name="getCurrentSlide_CurrentSlideReturned" classname="jabberpoint.PresentationTest" time="0.025"/>
+  <testcase name="constructorWithSlideViewerComponent_NonNullSlideViewerComponent_MinusOneSlideNumber_ZeroSize" classname="jabberpoint.PresentationTest" time="1.506"/>
+  <testcase name="defaultConstructor_NullSlideViewerComponent_MinusOneSlideNumber_ZeroSize" classname="jabberpoint.PresentationTest" time="0.001"/>
+  <testcase name="getCurrentSlide_CurrentSlideReturned" classname="jabberpoint.PresentationTest" time="0.027"/>
   <testcase name="nextSlide_SlideNumberIncreased" classname="jabberpoint.PresentationTest" time="0.002"/>
   <testcase name="getSlideInvalidIndex_NullReturned" classname="jabberpoint.PresentationTest" time="0.002"/>
   <testcase name="prevSlideAtBeginning_SlideNumberUnchanged" classname="jabberpoint.PresentationTest" time="0.003"/>
-  <testcase name="clear_AllSlidesRemoved_SlideNumberMinusOne" classname="jabberpoint.PresentationTest" time="0.002"/>
+  <testcase name="clear_AllSlidesRemoved_SlideNumberMinusOne" classname="jabberpoint.PresentationTest" time="0.003"/>
   <testcase name="prevSlide_SlideNumberDecreased_SlideViewerComponentUpdated" classname="jabberpoint.PresentationTest" time="0.014"/>
-  <testcase name="getSlide_SlideReturnedAtIndex" classname="jabberpoint.PresentationTest" time="0.001"/>
+  <testcase name="getSlide_SlideReturnedAtIndex" classname="jabberpoint.PresentationTest" time="0.002"/>
   <testcase name="nextSlideAtEnd_SlideNumberUnchanged_SlideViewerComponentUpdated" classname="jabberpoint.PresentationTest" time="0.002"/>
-  <testcase name="getTitle_ReturnsCorrectTitle" classname="jabberpoint.PresentationTest" time="0.001"/>
+  <testcase name="getTitle_ReturnsCorrectTitle" classname="jabberpoint.PresentationTest" time="0.002"/>
   <testcase name="getSlideNumber_ReturnsMinusOne" classname="jabberpoint.PresentationTest" time="0.002"/>
-  <testcase name="appendSlide_SlideAppended_SizeIncreased" classname="jabberpoint.PresentationTest" time="0.001"/>
-  <testcase name="setSlideNumber_SlideNumberSet_SlideViewerComponentUpdated" classname="jabberpoint.PresentationTest" time="0.003"/>
-  <testcase name="setTitle_NewTitleSet" classname="jabberpoint.PresentationTest" time="0.003"/>
-  <testcase name="setSlideViewComponent_NewSlideViewerComponentSet" classname="jabberpoint.PresentationTest" time="0.002"/>
+  <testcase name="appendSlide_SlideAppended_SizeIncreased" classname="jabberpoint.PresentationTest" time="0.002"/>
+  <testcase name="setSlideNumber_SlideNumberSet_SlideViewerComponentUpdated" classname="jabberpoint.PresentationTest" time="0.006"/>
+  <testcase name="setTitle_NewTitleSet" classname="jabberpoint.PresentationTest" time="0.002"/>
+  <testcase name="setSlideViewComponent_NewSlideViewerComponentSet" classname="jabberpoint.PresentationTest" time="0.001"/>
 </testsuite>

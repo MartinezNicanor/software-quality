@@ -31,7 +31,7 @@ class SlideItemTest
     {
         slide.addSlideItem(bitmapItemCreator.createSlideItem(1, "logo-woordmerk_ou.gif"));
         slide.addSlideItem(bitmapItemCreator.createSlideItem(2, "serclogo_fc.jpg"));
-        slide.addSlideItem(bitmapItemCreator.createSlideItem(4, "JabberPoint.gif"));
+        slide.addSlideItem(bitmapItemCreator.createSlideItem(4, "../JabberPoint.gif"));
 
         assertEquals(slide.getSlideItems().size(), 3);
     }

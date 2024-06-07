@@ -62,14 +62,14 @@ class SlideTest
         assertEquals(1, slide.getAmountOfSlideItems());
         SlideItem item = slide.getSlideItem(0);
         assertTrue(item instanceof BitmapItem);
-        assertEquals("Jabberpoint.gif", item.getText());
+        assertEquals("../Jabberpoint.gif", item.getText());
     }
 
     @Test
     void getSlideItem_ReturnsCorrectSlideItem()
     {
         slide.addTextItem(1, "Sample Text");
-        slide.addBitmapItem(1, "Jabberpoint.gif");
+        slide.addBitmapItem(1, "../Jabberpoint.gif");
 
         SlideItem textItem = slide.getSlideItem(0);
         SlideItem bitmapItem = slide.getSlideItem(1);

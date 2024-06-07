@@ -13,14 +13,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class KeyControllerTest
 {
     Presentation presentation;
-    Frame frame;
     KeyController keyController;
 
     @BeforeEach
     void setup()
     {
         presentation = new Presentation();
-        frame = new Frame();
         keyController = new KeyController(presentation);
     }
 
@@ -29,7 +27,7 @@ class KeyControllerTest
     {
         presentation.append(new Slide());
 
-        KeyEvent key = new KeyEvent(frame, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_PAGE_DOWN);
+        KeyEvent key = new KeyEvent(new java.awt.Label(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_PAGE_DOWN);
         keyController.keyPressed(key);
 
         assertEquals(0, presentation.getSlideNumber());
@@ -40,7 +38,7 @@ class KeyControllerTest
     {
         presentation.append(new Slide());
 
-        KeyEvent key = new KeyEvent(frame, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_ENTER);
+        KeyEvent key = new KeyEvent(new java.awt.Label(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_ENTER);
         keyController.keyPressed(key);
 
         assertEquals(0, presentation.getSlideNumber());
@@ -53,7 +51,7 @@ class KeyControllerTest
         presentation.append(new Slide());
         presentation.setSlideNumber(2);
 
-        KeyEvent key = new KeyEvent(frame, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_PAGE_UP);
+        KeyEvent key = new KeyEvent(new java.awt.Label(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_PAGE_UP);
         keyController.keyPressed(key);
 
         assertEquals(1, presentation.getSlideNumber());
@@ -67,7 +65,7 @@ class KeyControllerTest
         presentation.append(new Slide());
         presentation.setSlideNumber(3);
 
-        KeyEvent key = new KeyEvent(frame, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_UP);
+        KeyEvent key = new KeyEvent(new java.awt.Label(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_UP);
         keyController.keyPressed(key);
         keyController.keyPressed(key);
 
